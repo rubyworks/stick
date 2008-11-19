@@ -1,0 +1,112 @@
+--- 
+- 
+  type: import
+  file: si/base
+- 
+  name: inch
+  abbrev: in
+  type: length
+  equals: 2.54 cm
+  alias: inches
+- 
+  name: foot
+  abbrev: ft
+  type: length
+  equals: 12.0 in
+  alias: feet
+- 
+  name: yard
+  abbrev: yd
+  type: length
+  equals: 3.0 ft
+  alias: yards
+- 
+  name: furlong
+  type: length
+  equals: 220.0 yd
+  alias: furlongs
+- 
+  name: mile
+  abbrev: mi
+  type: length
+  equals: 8.0 furlongs
+  alias: miles
+- 
+  name: acre
+  type: unit
+  equals: 4840.0 sq_yd
+  alias: acres
+- 
+  name: section
+  type: unit
+  equals: 1.0 sq_mi
+  alias: sections
+- 
+  name: township
+  type: unit
+  equals: 36.0 sections
+  alias: townships
+- 
+  name: fluid_ounce
+  abbrev: fl_oz
+  type: unit
+  equals: 2.95735295625e-2 dm**3
+  alias: fluid_ounces
+- 
+  name: gill
+  type: unit
+  equals: 4.0 fl_oz
+  alias: gills
+- 
+  name: pint
+  abbrev: pt
+  type: unit
+  equals: 4.0 gills
+  alias: pints
+- 
+  name: quart
+  abbrev: qt
+  type: unit
+  equals: 2.0 pt
+  alias: quarts
+- 
+  name: gallon
+  abbrev: gal
+  type: unit
+  equals: 4.0 qt
+  alias: gallons
+- 
+  name: grain
+  abbrev: gr
+  type: unit
+  equals: 6.479891e-5 kg
+  alias: grains
+- 
+  name: ounce
+  abbrev: oz
+  type: unit
+  equals: 437.5 gr
+  alias: ounces
+- 
+  name: pound
+  abbrev: lb
+  type: unit
+  equals: 16.0 oz
+  alias: pounds
+- 
+  name: stone
+  type: unit
+  equals: 14.0 lb
+  alias: stones
+- 
+  name: hundredweight
+  abbrev: cwt
+  type: unit
+  equals: 100.0 lb
+  alias: hundredweights
+- 
+  name: short_ton
+  abbrev: st
+  type: unit
+  equals: 20.0 cwt
+  alias: short_tons

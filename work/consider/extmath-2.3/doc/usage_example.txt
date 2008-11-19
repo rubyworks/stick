@@ -1,0 +1,451 @@
+               Extended math library : Usage examples
+
+The following set of test cases illustrates the usage of all Extmath
+functions:
+
+require 'runit/testcase'
+require 'runit/cui/testrunner'
+require 'runit/testsuite'
+require 'extmath'
+
+class Testing_class < RUNIT::TestCase
+
+  def test_constants
+    assert_equal(Math::E,  Extmath::E)
+    assert_equal(Math::PI, Extmath::PI)
+  end
+
+  def test_sign_functions
+
+    # Check behavior of abs
+    assert_equal(3.1, Extmath.abs(-3.1))
+    assert_equal(0.0, Extmath.abs( 0.0))
+    assert_equal(3.1, Extmath.abs( 3.1))
+
+    # Check behavior of sign
+    assert_equal(-1.0, Extmath.sign(-3.1))
+    assert_equal( 0.0, Extmath.sign( 0.0))
+    assert_equal( 1.0, Extmath.sign( 3.1))
+
+  end
+
+  def test_trigonometric_functions
+
+    # Check identity of Extmath.acos and Math.acos
+    assert_equal(Math.acos(-1.0), Extmath.acos(-1.0))
+    assert_equal(Math.acos( 1.0), Extmath.acos( 1.0))
+
+    # Check behavior of acot
+    assert_equal_float(0.5 * Math::PI - Math.atan(-1.0), Extmath.acot(-1.0), 1.0e-6)
+    assert_equal_float(0.5 * Math::PI - Math.atan( 1.0), Extmath.acot( 1.0), 1.0e-6)
+
+    # Check identity of Extmath.asin and Math.asin
+    assert_equal(Math.asin(-1.0), Extmath.asin(-1.0))
+    assert_equal(Math.asin( 1.0), Extmath.asin( 1.0))
+
+    # Check identity of Extmath.atan and Math.atan
+    assert_equal(Math.atan(-1.0), Extmath.atan(-1.0))
+    assert_equal(Math.atan( 1.0), Extmath.atan( 1.0))
+
+    # Check identity of Extmath.atan2 and Math.atan2
+    assert_equal(Math.atan2(-3.1, 3.1), Extmath.atan2(-3.1, 3.1))
+    assert_equal(Math.atan2( 3.1, 3.1), Extmath.atan2( 3.1, 3.1))
+
+    # Check identity of Extmath.cos and Math.cos
+    assert_equal(Math.cos(-1.0), Extmath.cos(-1.0))
+    assert_equal(Math.cos( 1.0), Extmath.cos( 1.0))
+
+    # Check identity of Extmath.asin and 1.0 / Math.sin
+    assert_equal(1.0 / Math.sin(-1.0), Extmath.cosec(-1.0))
+    assert_equal(1.0 / Math.sin( 1.0), Extmath.cosec( 1.0))
+
+    # Check identity of Extmath.cot and 1.0 / Math.tan
+    assert_equal_float(1.0 / Math.tan(1.0), Extmath.cot(1.0), 1.0e-6)
+    assert_equal_float(1.0 / Math.tan(2.0), Extmath.cot(2.0), 1.0e-6)
+
+    # Check identity of Extmath.sec and 1.0 / Math.cos
+    assert_equal_float(1.0 / Math.cos(1.0), Extmath.sec(1.0), 1.0e-6)
+    assert_equal_float(1.0 / Math.cos(2.0), Extmath.sec(2.0), 1.0e-6)
+
+    # Check identity of Extmath.sin and Math.sin
+    assert_equal(Math.sin(-1.0), Extmath.sin(-1.0))
+    assert_equal(Math.sin( 1.0), Extmath.sin( 1.0))
+
+    # Check identity of Extmath.tan and Math.tan
+    assert_equal(Math.tan(-1.0), Extmath.tan(-1.0))
+    assert_equal(Math.tan( 1.0), Extmath.tan( 1.0))
+
+  end
+
+  def test_hyperbolic_functions
+
+    # Check identity of Extmath.acosh and Math.acosh
+    assert_equal(Math.acosh(1.0), Extmath.acosh(1.0))
+    assert_equal(Math.acosh(2.0), Extmath.acosh(2.0))
+
+    # Check behavior of acoth
+    assert_equal_float(0.5 * Math.log(5.0), Extmath.acoth(1.5), 1.0e-6)
+    assert_equal_float(0.5 * Math.log(1.5), Extmath.acoth(5.0), 1.0e-6)
+
+    # Check identity of Extmath.asinh and Math.asinh
+    assert_equal(Math.asinh(-1.0), Extmath.asinh(-1.0))
+    assert_equal(Math.asinh( 1.0), Extmath.asinh( 1.0))
+
+    # Check identity of Extmath.atanh and Math.atanh
+    assert_equal(Math.atanh(-0.5), Extmath.atanh(-0.5))
+    assert_equal(Math.atanh( 0.5), Extmath.atanh( 0.5))
+
+    # Check identity of Extmath.acosech and 1.0 / Math.sinh
+    assert_equal(1.0 / Math.sinh(-1.0), Extmath.cosech(-1.0))
+    assert_equal(1.0 / Math.sinh( 1.0), Extmath.cosech( 1.0))
+
+    # Check identity of Extmat.cosh and Math.cosh
+    assert_equal(Math.cosh(-1.0), Extmath.cosh(-1.0))
+    assert_equal(Math.cosh( 1.0), Extmath.cosh( 1.0))
+
+    # Check identity of Extmat.coth and 1.0 / Math.tanh
+    assert_equal_float(1.0 / Math.tanh(1.0), Extmath.coth(1.0), 1.0e-6)
+    assert_equal_float(1.0 / Math.tanh(2.0), Extmath.coth(2.0), 1.0e-6)
+
+    # Check identity of Extmat.sech and 1.0 / Math.cosh
+    assert_equal_float(1.0 / Math.cosh(1.0), Extmath.sech(1.0), 1.0e-6)
+    assert_equal_float(1.0 / Math.cosh(2.0), Extmath.sech(2.0), 1.0e-6)
+
+    # Check identity of Extmat.sinh and Math.sinh
+    assert_equal(Math.sinh(-1.0), Extmath.sinh(-1.0))
+    assert_equal(Math.sinh( 1.0), Extmath.sinh( 1.0))
+
+    # Check identity of Extmat.tanh and Math.tanh
+    assert_equal(Math.tanh(-1.0), Extmath.tanh(-1.0))
+    assert_equal(Math.tanh( 1.0), Extmath.tanh( 1.0))
+  end
+
+  def test_explog_functions
+
+    # Check behavior of exp
+    assert_equal_float(               1.0, Extmath.exp(0.0), 1.0e-6)
+    assert_equal_float(Math.sqrt(Math::E), Extmath.exp(0.5), 1.0e-6)
+    assert_equal_float(           Math::E, Extmath.exp(1.0), 1.0e-6)
+
+    # Check behavior of exp10
+    assert_equal_float(            1.0, Extmath.exp10(0.0), 1.0e-6)
+    assert_equal_float(Math.sqrt(10.0), Extmath.exp10(0.5), 1.0e-6)
+    assert_equal_float(           10.0, Extmath.exp10(1.0), 1.0e-6)
+
+    # Check behavior of exp2
+    assert_equal_float(           1.0, Extmath.exp2(0.0), 1.0e-6)
+    assert_equal_float(Math.sqrt(2.0), Extmath.exp2(0.5), 1.0e-6)
+    assert_equal_float(           2.0, Extmath.exp2(1.0), 1.0e-6)
+
+    # Check behavior of frexp
+    assert_equal([-0.99609375, 8], Extmath.frexp(-255.0))
+    assert_equal([-0.5,        1], Extmath.frexp(  -1.0))
+    assert_equal([ 0.0,        0], Extmath.frexp(   0.0))
+    assert_equal([ 0.5,        1], Extmath.frexp(   1.0))
+    assert_equal([ 0.99609375, 8], Extmath.frexp( 255.0))
+
+    # Check behavior of ldexp
+    assert_equal_float(1.0, Extmath.ldexp(0.25, 2), 1.0e-6)
+    assert_equal_float(1.0, Extmath.ldexp(0.5,  1), 1.0e-6)
+    assert_equal_float(1.0, Extmath.ldexp(2,   -1), 1.0e-6)
+    assert_equal_float(1.0, Extmath.ldexp(4,   -2), 1.0e-6)
+
+    # Check identity of Extmat.log and Math.log
+    assert_equal(Math.log(2.0), Extmath.log(2.0))
+    assert_equal(Math.log(3.0), Extmath.log(3.0))
+
+    # Check identity of Extmat.log10 and Math.log10
+    assert_equal(Math.log10(2.0), Extmath.log10(2.0))
+    assert_equal(Math.log10(3.0), Extmath.log10(3.0))
+
+    # Check behavior of log2
+    assert_equal_float(0.5, Extmath.log2(Math.sqrt(2.0)), 1.0e-6)
+    assert_equal_float(1.0,            Extmath.log2(2.0), 1.0e-6)
+    assert_equal_float(2.0,            Extmath.log2(4.0), 1.0e-6)
+
+  end
+
+  def test_pwr_functions
+
+    # Check behavior of pwr
+    assert_equal_float(64.0,   Extmath.pwr( 4.0,        3.0), 1.0e-6)
+    assert_equal_float( 0.729, Extmath.pwr( 0.9,        3.0), 1.0e-6)
+    assert_equal_float( 0.25,  Extmath.pwr(64.0, -1.0 / 3.0), 1.0e-6)
+    assert_equal_float( 2.0,   Extmath.pwr( 0.25,      -0.5), 1.0e-6)
+
+    # Check behavior of root
+    assert_equal_float( 4.0,  Extmath.root(64.0,          3.0), 1.0e-6)
+    assert_equal_float( 0.9,  Extmath.root( 0.729,        3.0), 1.0e-6)
+    assert_equal_float(64.0,  Extmath.root( 0.25,  -1.0 / 3.0), 1.0e-6)
+    assert_equal_float( 0.25, Extmath.root( 2.0,         -0.5), 1.0e-6)
+
+    # Check behavior of sqr
+    assert_equal_float(0.81, Extmath.sqr(-0.9), 1.0e-6)
+    assert_equal_float(0.49, Extmath.sqr(-0.7), 1.0e-6)
+    assert_equal_float(0.49, Extmath.sqr(-0.7), 1.0e-6)
+    assert_equal_float(0.81, Extmath.sqr( 0.9), 1.0e-6)
+
+    # Check behavior of sqrt
+    assert_equal_float(0.7, Extmath.sqrt(0.49), 1.0e-6)
+    assert_equal_float(0.9, Extmath.sqrt(0.81), 1.0e-6)
+
+  end
+
+  def test_rounding_functions
+
+    # Check behavior of ceil
+    assert_equal( 2, Extmath.ceil( 1.99999))
+    assert_equal( 2, Extmath.ceil( 1.5))
+    assert_equal( 2, Extmath.ceil( 1.00001))
+    assert_equal( 1, Extmath.ceil( 0.99999))
+    assert_equal( 1, Extmath.ceil( 0.5))
+    assert_equal( 1, Extmath.ceil( 0.00001))
+    assert_equal( 0, Extmath.ceil(-0.00001))
+    assert_equal( 0, Extmath.ceil(-0.5))
+    assert_equal( 0, Extmath.ceil(-0.99999))
+    assert_equal(-1, Extmath.ceil(-1.00001))
+    assert_equal(-1, Extmath.ceil(-1.5))
+    assert_equal(-1, Extmath.ceil(-1.99999))
+
+    # Check behavior of floor
+    assert_equal( 1, Extmath.floor( 1.99999))
+    assert_equal( 1, Extmath.floor( 1.5))
+    assert_equal( 1, Extmath.floor( 1.00001))
+    assert_equal( 0, Extmath.floor( 0.99999))
+    assert_equal( 0, Extmath.floor( 0.5))
+    assert_equal( 0, Extmath.floor( 0.00001))
+    assert_equal(-1, Extmath.floor(-0.00001))
+    assert_equal(-1, Extmath.floor(-0.5))
+    assert_equal(-1, Extmath.floor(-0.99999))
+    assert_equal(-2, Extmath.floor(-1.00001))
+    assert_equal(-2, Extmath.floor(-1.5))
+    assert_equal(-2, Extmath.floor(-1.99999))
+  end
+
+  def test_misc_functions
+
+    # Check behavior of beta
+    assert_equal_float( 1.0,        Extmath.beta(1.0, 1.0), 1.0e-6)
+    assert_equal_float( 0.5,        Extmath.beta(1.0, 2.0), 1.0e-6)
+    assert_equal_float( 1.0 /  3.0, Extmath.beta(1.0, 3.0), 1.0e-6)
+    assert_equal_float( 0.5,        Extmath.beta(2.0, 1.0), 1.0e-6)
+    assert_equal_float( 1.0 /  6.0, Extmath.beta(2.0, 2.0), 1.0e-6)
+    assert_equal_float( 1.0 / 12.0, Extmath.beta(2.0, 3.0), 1.0e-6)
+    assert_equal_float( 1.0 /  3.0, Extmath.beta(3.0, 1.0), 1.0e-6)
+    assert_equal_float( 1.0 / 12.0, Extmath.beta(3.0, 2.0), 1.0e-6)
+    assert_equal_float( 1.0 / 30.0, Extmath.beta(3.0, 3.0), 1.0e-6)
+
+    # Check behavior of erf and erfc
+    assert_equal_float(0.0, Extmath.erf(0.0),  1.0e-6)
+    assert_equal_float(1.0, Extmath.erfc(0.0), 1.0e-6)
+
+    # Check behavior of factorial
+    fac = 1
+    1.upto(100) {|i|
+      fac *= i
+      assert_equal(fac, Extmath.factorial(i))
+    }
+
+    # Check behavior of gamma (assert data that can be found in Bronstein Semendjajew).
+    assert_equal_float(1.00000, Extmath.gamma(1.00), 1.0e-5)
+    assert_equal_float(0.94740, Extmath.gamma(1.11), 1.0e-5)
+    assert_equal_float(0.91311, Extmath.gamma(1.22), 1.0e-5)
+    assert_equal_float(0.89338, Extmath.gamma(1.33), 1.0e-5)
+    assert_equal_float(0.88581, Extmath.gamma(1.44), 1.0e-5)
+    assert_equal_float(0.88887, Extmath.gamma(1.55), 1.0e-5)
+    assert_equal_float(0.90167, Extmath.gamma(1.66), 1.0e-5)
+    assert_equal_float(0.92376, Extmath.gamma(1.77), 1.0e-5)
+    assert_equal_float(0.95507, Extmath.gamma(1.88), 1.0e-5)
+    assert_equal_float(0.99581, Extmath.gamma(1.99), 1.0e-5)
+
+    # Check behavior of gcd
+    assert_equal(                   4, Extmath.gcd(                  4732, 4700))
+    assert_equal(                   1, Extmath.gcd(                  3651, 5023))
+    assert_equal(Extmath.factorial(47), Extmath.gcd(Extmath.factorial(90), Extmath.factorial(47)))
+    assert_equal(              5565651, Extmath.gcd(            612221610, 67461255771))
+
+    # Check behavior of hypoth
+    assert_equal_float(Math.sqrt( 5.0), Extmath.hypot(1.0, 2.0), 1.0e-6)
+    assert_equal_float(Math.sqrt(13.0), Extmath.hypot(2.0, 3.0), 1.0e-6)
+    assert_equal_float(            5.0, Extmath.hypot(3.0, 4.0), 1.0e-6)
+
+    # Check behavior of lcm
+    assert_equal(17017, Extmath.lcm( 77, 221))
+    assert_equal( 2431, Extmath.lcm(143, 187))
+    assert_equal( 1547, Extmath.lcm( 91, 119))
+
+    # Check behavior of ln_gamma
+    assert_equal_float(               0.0, Extmath.ln_gamma(2.0), 1.0e-6)
+    assert_equal_float(Extmath.log(  2.0), Extmath.ln_gamma(3.0), 1.0e-6)
+    assert_equal_float(Extmath.log(  6.0), Extmath.ln_gamma(4.0), 1.0e-6)
+    assert_equal_float(Extmath.log( 24.0), Extmath.ln_gamma(5.0), 1.0e-6)
+    assert_equal_float(Extmath.log(120.0), Extmath.ln_gamma(6.0), 1.0e-6)
+    assert_equal_float(Extmath.log(720.0), Extmath.ln_gamma(7.0), 1.0e-6)
+
+    # Check behavior of sinc
+    assert_equal_float(                1.0, Extmath.sinc( 0.0), 0.0)
+    assert_equal_float(      Math.sin(1.0), Extmath.sinc( 1.0), 0.0)
+    assert_equal_float(      Math.sin(1.0), Extmath.sinc(-1.0), 0.0)
+    assert_equal_float(0.5 * Math.sin(2.0), Extmath.sinc( 2.0), 0.0)
+    assert_equal_float(0.5 * Math.sin(2.0), Extmath.sinc(-2.0), 0.0)
+
+  end
+
+  def test_sign_consistency
+
+    # Check complementarity of abs and sign
+    assert_equal_float(-2.0, Extmath.abs(-2.0) * Extmath.sign(-2.0), 1e-6)
+    assert_equal_float( 0.0, Extmath.abs( 0.0) * Extmath.sign( 0.0), 1e-6)
+    assert_equal_float( 3.0, Extmath.abs( 3.0) * Extmath.sign( 3.0), 1e-6)
+
+  end
+
+  def test_trigonometric_consistency
+
+    # Check complementarity of acos and cos
+    assert_equal_float( 0.5, Extmath.acos(Extmath.cos(-0.5)), 1.0e-6)
+    assert_equal_float(-0.5, Extmath.cos(Extmath.acos(-0.5)), 1.0e-6)
+    assert_equal_float( 0.5, Extmath.acos(Extmath.cos( 0.5)), 1.0e-6)
+    assert_equal_float( 0.5, Extmath.cos(Extmath.acos( 0.5)), 1.0e-6)
+
+    # Check complementarity of acot and cot
+    assert_equal_float(1.0, Extmath.acot(Extmath.cot(1.0)), 1.0e-6)
+    assert_equal_float(1.0, Extmath.cot(Extmath.acot(1.0)), 1.0e-6)
+    assert_equal_float(2.0, Extmath.acot(Extmath.cot(2.0)), 1.0e-6)
+    assert_equal_float(2.0, Extmath.cot(Extmath.acot(2.0)), 1.0e-6)
+
+    # Check complementarity of asin and sin
+    assert_equal_float( 0.5, Extmath.asin(Extmath.sin( 0.5)), 1.0e-6)
+    assert_equal_float( 0.5, Extmath.sin(Extmath.asin( 0.5)), 1.0e-6)
+    assert_equal_float(-0.5, Extmath.asin(Extmath.sin(-0.5)), 1.0e-6)
+    assert_equal_float(-0.5, Extmath.sin(Extmath.asin(-0.5)), 1.0e-6)
+
+    # Check consistency of atan2 and acot
+    assert_equal_float(Extmath.atan2(1.0, 1.0), Extmath.acot(1.0), 1.0e-6)
+    assert_equal_float(Extmath.atan2(1.0, 2.0), Extmath.acot(2.0), 1.0e-6)
+
+    # Check consistency of atan2 and atan
+    assert_equal_float(Extmath.atan2(-3.1, 3.1), Extmath.atan(-1.0), 1.0e-6)
+    assert_equal_float(Extmath.atan2( 3.1, 3.1), Extmath.atan( 1.0), 1.0e-6)
+
+    # Check complementarity of atan and tan
+    assert_equal_float( 0.5, Extmath.atan(Extmath.tan( 0.5)), 1.0e-6)
+    assert_equal_float( 0.5, Extmath.tan(Extmath.atan( 0.5)), 1.0e-6)
+    assert_equal_float(-0.5, Extmath.atan(Extmath.tan(-0.5)), 1.0e-6)
+    assert_equal_float(-0.5, Extmath.tan(Extmath.atan(-0.5)), 1.0e-6)
+
+    # Check complementarity of cos and sec
+    assert_equal_float(1.0, Extmath.sec(-2.0) * Extmath.cos(-2.0), 1.0e-6)
+    assert_equal_float(1.0, Extmath.sec(-1.0) * Extmath.cos(-1.0), 1.0e-6)
+    assert_equal_float(1.0, Extmath.sec( 1.0) * Extmath.cos( 1.0), 1.0e-6)
+    assert_equal_float(1.0, Extmath.sec( 2.0) * Extmath.cos( 2.0), 1.0e-6)
+
+    # Check complementarity of cosec and sin
+    assert_equal_float(1.0, Extmath.cosec(-2.0) * Extmath.sin(-2.0), 1.0e-6)
+    assert_equal_float(1.0, Extmath.cosec(-1.0) * Extmath.sin(-1.0), 1.0e-6)
+    assert_equal_float(1.0, Extmath.cosec( 1.0) * Extmath.sin( 1.0), 1.0e-6)
+    assert_equal_float(1.0, Extmath.cosec( 2.0) * Extmath.sin( 2.0), 1.0e-6)
+
+  end
+
+  def test_hyperbolic_consistency
+
+    # Check complementarity of acosh and cosh
+    assert_equal_float(1.5, Extmath.acosh(Extmath.cosh( 1.5)), 1.0e-6)
+    assert_equal_float(1.5, Extmath.cosh(Extmath.acosh( 1.5)), 1.0e-6)
+    assert_equal_float(1.5, Extmath.acosh(Extmath.cosh(-1.5)), 1.0e-6)
+
+    # Check complementarity of acoth and coth
+    assert_equal_float( 1.5, Extmath.acoth(Extmath.coth( 1.5)), 1.0e-6)
+    assert_equal_float( 1.5, Extmath.coth(Extmath.acoth( 1.5)), 1.0e-6)
+    assert_equal_float(-1.5, Extmath.acoth(Extmath.coth(-1.5)), 1.0e-6)
+    assert_equal_float(-1.5, Extmath.coth(Extmath.acoth(-1.5)), 1.0e-6)
+
+    # Check complementarity of asinh and sinh
+    assert_equal_float( 1.5, Extmath.asinh(Extmath.sinh( 1.5)), 1.0e-6)
+    assert_equal_float( 1.5, Extmath.sinh(Extmath.asinh( 1.5)), 1.0e-6)
+    assert_equal_float(-1.5, Extmath.asinh(Extmath.sinh(-1.5)), 1.0e-6)
+    assert_equal_float(-1.5, Extmath.sinh(Extmath.asinh(-1.5)), 1.0e-6)
+
+    # Check complementarity of atanh and tanh
+    assert_equal_float( 0.5, Extmath.atanh(Extmath.tanh( 0.5)), 1.0e-6)
+    assert_equal_float( 0.5, Extmath.tanh(Extmath.atanh( 0.5)), 1.0e-6)
+    assert_equal_float(-0.5, Extmath.atanh(Extmath.tanh(-0.5)), 1.0e-6)
+    assert_equal_float(-0.5, Extmath.tanh(Extmath.atanh(-0.5)), 1.0e-6)
+
+    # Check complementarity of cosech and sinh
+    assert_equal_float(1.0, Extmath.cosech(-2.0) * Extmath.sinh(-2.0), 1.0e-6)
+    assert_equal_float(1.0, Extmath.cosech(-1.0) * Extmath.sinh(-1.0), 1.0e-6)
+    assert_equal_float(1.0, Extmath.cosech( 1.0) * Extmath.sinh( 1.0), 1.0e-6)
+    assert_equal_float(1.0, Extmath.cosech( 2.0) * Extmath.sinh( 2.0), 1.0e-6)
+
+    # Check complementarity of cosh and sech
+    assert_equal_float(1.0, Extmath.sech(-2.0) * Extmath.cosh(-2.0), 1.0e-6)
+    assert_equal_float(1.0, Extmath.sech(-1.0) * Extmath.cosh(-1.0), 1.0e-6)
+    assert_equal_float(1.0, Extmath.sech( 1.0) * Extmath.cosh( 1.0), 1.0e-6)
+    assert_equal_float(1.0, Extmath.sech( 2.0) * Extmath.cosh( 2.0), 1.0e-6)
+
+  end
+
+  def test_explog_consistency
+
+    # Check complementarity of exp and log
+    assert_equal_float(0.5, Extmath.log(Extmath.exp(0.5)), 1.0e-6)
+    assert_equal_float(1.0, Extmath.log(Extmath.exp(1.0)), 1.0e-6)
+    assert_equal_float(2.0, Extmath.log(Extmath.exp(2.0)), 1.0e-6)
+    assert_equal_float(0.5, Extmath.exp(Extmath.log(0.5)), 1.0e-6)
+    assert_equal_float(1.0, Extmath.exp(Extmath.log(1.0)), 1.0e-6)
+    assert_equal_float(2.0, Extmath.exp(Extmath.log(2.0)), 1.0e-6)
+
+    # Check complementarity of exp10 and log10
+    assert_equal_float(0.5, Extmath.log10(Extmath.exp10(0.5)), 1.0e-6)
+    assert_equal_float(1.0, Extmath.log10(Extmath.exp10(1.0)), 1.0e-6)
+    assert_equal_float(2.0, Extmath.log10(Extmath.exp10(2.0)), 1.0e-6)
+    assert_equal_float(0.5, Extmath.exp10(Extmath.log10(0.5)), 1.0e-6)
+    assert_equal_float(1.0, Extmath.exp10(Extmath.log10(1.0)), 1.0e-6)
+    assert_equal_float(2.0, Extmath.exp10(Extmath.log10(2.0)), 1.0e-6)
+
+    # Check complementarity of exp2 and log2
+    assert_equal_float(0.5, Extmath.log2(Extmath.exp2(0.5)), 1.0e-6)
+    assert_equal_float(1.0, Extmath.log2(Extmath.exp2(1.0)), 1.0e-6)
+    assert_equal_float(2.0, Extmath.log2(Extmath.exp2(2.0)), 1.0e-6)
+    assert_equal_float(0.5, Extmath.exp2(Extmath.log2(0.5)), 1.0e-6)
+    assert_equal_float(1.0, Extmath.exp2(Extmath.log2(1.0)), 1.0e-6)
+    assert_equal_float(2.0, Extmath.exp2(Extmath.log2(2.0)), 1.0e-6)
+
+  end
+
+  def test_pwr_consistency
+
+    # Check complementarity of pwr and root
+    assert_equal_float(           4.0, Extmath.root(Extmath.pwr(2.0, 6.0), 3.0), 1.0e-6)
+    assert_equal_float(           2.0, Extmath.root(Extmath.pwr(4.0, 4.0), 8.0), 1.0e-6)
+    assert_equal_float(Math.sqrt(2.0), Extmath.pwr(Extmath.root(2.0, 6.0), 3.0), 1.0e-6)
+    assert_equal_float(          16.0, Extmath.pwr(Extmath.root(4.0, 4.0), 8.0), 1.0e-6)
+
+    # Check complementarity of sqrt and sqr
+    assert_equal_float(0.3, Extmath.sqrt(Extmath.sqr( 0.3)), 1.0e-6)
+    assert_equal_float(0.3, Extmath.sqrt(Extmath.sqr(-0.3)), 1.0e-6)
+    assert_equal_float(0.3, Extmath.sqr(Extmath.sqrt( 0.3)), 1.0e-6)
+
+  end
+
+  def test_misc_consistency
+
+    # Check complimentarity of erf and erfc
+    assert_equal_float(1.0, Extmath.erf(1.0) + Extmath.erfc(1.0), 1.0e-6)
+    assert_equal_float(1.0, Extmath.erf(2.0) + Extmath.erfc(2.0), 1.0e-6)
+    assert_equal_float(1.0, Extmath.erf(3.0) + Extmath.erfc(3.0), 1.0e-6)
+    assert_equal_float(1.0, Extmath.erf(4.0) + Extmath.erfc(4.0), 1.0e-6)
+
+  end
+
+end
+
+RUNIT::CUI::TestRunner.run(Testing_class.suite)
+
+  -----------------------------------------------------------------
+
+Last changed: 2003-08-21
+HTML to text by ELinks 0.4.3rc1 - Text WWW browser
+ELinks is vailable at http://elinks.or.cz/

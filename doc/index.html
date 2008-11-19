@@ -1,0 +1,227 @@
+<html>
+<head>
+  <title>Ruby Stick</title>
+
+  <meta name="description" content="Ruby programming library for scientific applications."/>
+  <meta name="keywords" content="ruby, science, programming, si units, math, mathematics"/>
+
+  <link href="style.css" rel="stylesheet" type="text/css"/>
+  <link href="img/scrabble_s.gif" rel="icon"/>
+
+  <script type="text/javascript">
+    //pic1 = new Image();
+    //pic1.src="web/img/hruler-mm.png";
+
+    var IE = document.all?true:false;
+
+    var titleElement = null;
+
+    var tempX = 0; var tempY = 0;
+    var offX  = 0; var offY  = 0;
+    var setX  = 0; var setY  = 0;
+
+    function getMouseXY(e) {
+      if (IE) { // grab the x-y pos.s if browser is IE
+        tempX = event.clientX + document.body.scrollLeft;
+        tempY = event.clientY + document.body.scrollTop;
+      }
+      else {  // grab the x-y pos.s if browser is NS
+        tempX = e.pageX;
+        tempY = e.pageY;
+      }
+      if (tempX < 0){tempX = 0;}
+      if (tempY < 0){tempY = 0;}
+      return true;
+    };
+
+    function slideRuler(e) {
+      var left = parseInt(titleElement.style.backgroundPosition);
+      getMouseXY(e);
+      left = setX + (tempX - offX);
+      titleElement.style.backgroundPosition = left + "px 0px"
+    }
+
+    function setup() {
+      titleElement = document.getElementById('stick');
+      if (titleElement.style.backgroundPosition == '') {
+        titleElement.style.backgroundPosition = "-18px 0px";
+      }
+      if (!IE) document.captureEvents(Event.MOUSEMOVE);
+      titleElement.onmousedown = slide;
+      titleElement.onmouseup = unslide;
+    }
+
+    function slide(e) {
+      getMouseXY(e);
+      setX = parseInt(titleElement.style.backgroundPosition);
+      offX = tempX;
+      titleElement.onmousemove = slideRuler;
+    };
+
+    function unslide() {
+      titleElement.onmousemove = null;
+    };
+  </script>
+</head>
+
+<body onload="javascript: setup();">
+
+<div id="container">
+
+  <div class="adtop">
+    <script type="text/javascript"><!--
+    google_ad_client = "pub-1126154564663472";
+    //STICK DOC 234x60
+    google_ad_slot = "2256952832";
+    google_ad_width = 234;
+    google_ad_height = 60;
+    //--></script>
+    <script type="text/javascript"
+    src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+    </script>
+  </div>
+
+  <div class="titlebar">
+    <span class="title">S T I C K</span> <br/>
+    <span class="subtitle">Scientific Code Kit with SI Units System</span>
+  </div>
+
+  <div id="stick" style="clear: both;" onmousedown="javascript: slide()" onmouseup="javascript: unslide();">
+  </div>
+
+  <div class="menu">
+    <a href="http://rubyforge.org/projects/stick">Development</a> &nbsp;
+    <a href="rdoc/index.html">Documentation</a> &nbsp;
+    <a href="http://rubyforge.org/projects/stick">Download</a> &nbsp;
+  </div>
+
+  <div class="text" style="z-index: 0;">
+
+    <h2>Introduction</h2>
+
+    <p>STICK stands for Scientific Code Kit. The goal of this project is to provide
+    a general purpose, comprehensive math and science library the Ruby programming
+    language. Of course, the name also alludes to "measuring stick", and for good
+    reason. STICK's primary library, units.rb, provides a powerful SI units system
+    which integrates directly into Ruby's method dispatch system. With it, one can
+    quickly perform typed calculations and conversions.
+    </p>
+
+    <p>Here are few simple examples:</p>
+
+    <pre>
+      reqiure 'stick/units'
+      include Units
+
+      1.mile.to(feet)
+      1.acre.to(yd**2)
+      1.acre.to(sq_yd)
+      1.gallon.to(self.L)
+      1.lb.to(kg)
+      1.m.s.to(m.s)
+      1.sq_mi.to(km**2)
+      1.mile.to(km)
+      1.usd.to(twd)
+      1.bit/s + 8.bytes/s
+    </pre>
+
+    <p>Pretty scienterrific, yes?</p>
+
+    <p>Also included in the STICK library is a module of real world contants.
+    The constants are stored in the Math::Constants module, but this
+    is included in Math for direct use by other Math libraries.
+    Math::Constants::CGS provides the constants in cm kg s format,
+    instead of the standard m kg s. Some examples...</p>
+
+    <pre>
+      require 'stick/constants'
+
+      Math::SPEED_OF_LIGHT                   #=> 2.99792458e8 m/s
+      Math::CGS::SPEED_OF_LIGHT              #=> 2.99792458e10 cm/s
+    </pre>
+
+    <p>You will also find a new Matrix library include in Stick this is the matrix
+    class, taken from RUby 1.9 and extended with Cosmin Bonschis work from his
+    Google's Summer of Code 2007 project. Combining the matrix and units system,
+    we can perform typed matrix operations.</p>
+
+    <pre>
+      Matrix[[1,2,3]] * 1.kg
+      => [[1 kg, 2 kg, 3 kg]]
+    </pre>
+
+    <p>You will also find the Quaternion class in the package. A bit esoteric,
+    but there it is.</p>
+
+    <p>An earlier version of Stick contained a set of convenient extensions
+    for Time, in times.rb. We have however deprecated those as they did not
+    integrate with the units systems. We will consider a replacement for this
+    in the future.</p>
+
+    <br/>
+
+    <h2>Resources</h2>
+
+    <div id="resource">
+      <a href="http://mathworld.wolfram.com/">MathWorld</a>
+      A free resource from Wolfram Research built on Mathematica
+      technology.
+    </div>
+
+    <div id="resource">
+      <a href="http://physics.nist.gov/cuu/Units/index.html">NIST Reference</a>
+      Reference material for SI Constants, Units and Uncertianty.
+    </div>
+
+    <br/>
+
+    <h2>Copying</h2>
+
+    <p>STICK is copyright by Peter Vanbroekhoven and Thomas Sawyer. Some adapted works
+    also have respective copyrights to their contributors.<p>
+
+    <p>STICK is distributed under the terms of the MIT license.</p>
+
+    <br/>
+
+  </div>
+
+  <div class="ad">
+    <script type="text/javascript"><!--
+    google_ad_client = "pub-1126154564663472";
+    //STICK 728x90, 12/21/07
+    google_ad_slot = "6458160191";
+    google_ad_width = 728;
+    google_ad_height = 90;
+    //--></script>
+    <script type="text/javascript"
+    src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+    </script>
+    <br/><br/>
+    <span style="font-size: .8em;">
+      All ad revenues support <a href="http://psytower.info/tigerops/">Tiger Ops</a>,
+      a community of developers prmoting open source solutions.
+    </span>
+  </div>
+
+</div>
+
+<div class="copyright">
+  <p>STICK, Copyright &copy; 2006-2007 Peter Vanbroekhoven and Thomas Sawyer.</p>
+  <p>STICK is distributed under the terms of the MIT license.</p>
+  <p>&para;</p>
+  <p>As my old friend, Marion, used to say when exclaiming a successful attack of any sort, "<i>Stick!</i>"</p>
+</div>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-2883355-4");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+
+</body>
+</html>

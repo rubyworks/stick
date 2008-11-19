@@ -1,0 +1,124 @@
+body {
+  padding: 0;
+  margin: 0;
+  background: #555555;
+  text-align: center;
+  font-size: 9pt;
+  font-family: Microsoft sans-serif, sans-serif, verdana, arial;
+}
+
+pre {
+  margin-left: -20px;
+  font-family: monospace;
+  color: #555555;
+  font-size: .9em;
+  line-height: 1.6em;
+  font-weight: bold;
+}
+
+a {
+  color: blue;
+  font-weight: bold;
+}
+
+h2 {
+  margin-bottom: 5px;
+}
+
+p {
+  line-height: 1.4em;
+}
+
+.section {
+    margin: 12px 38px 38px 38px;
+}
+
+#container {
+  width: 800px;
+  margin: 0 auto;
+  position: relative;
+  background: white;
+  border-left: 3px solid #333333;
+  border-right: 3px solid #333333;
+  border-bottom: 3px solid #333333;
+  text-align: left;
+}
+
+.menu {
+  padding: 10px 20px 5px 20px;
+  background: #fefefe;
+  text-align: right;
+}
+
+.menu a {
+  color: black;
+  text-decoration: none;
+}
+
+.menu a:hover {
+  color: red;
+  text-decoration: underline;
+}
+
+.titlebar {
+  height: 90px;
+  padding: 20px 0px 0px 20px;
+}
+
+.title {
+  font: bold 64px serif;
+  color: black;
+  text-align: left;
+  line-height: 64px;
+}
+
+.subtitle {
+  color: black;
+  padding-left: 8px;
+  font-family: monospace;
+}
+
+#stick {
+  height: 140px;
+  z-index: 10;
+  background: url(img/ruler-mm.png) -18px 0px no-repeat white;
+}
+
+.adtop {
+  float: right;
+  border: 0px solid gray;
+  margin: 30px 10px 10px 0;
+}
+
+.ad {
+  padding: 10px;
+  border-top: 1px solid gray;
+  border-bottom: 0px solid gray;
+  text-align: center;
+}
+
+.text {
+  position: relative;
+  background: white;
+  /*border-left: 2px solid #444444;
+  border-right: 2px solid #444444;*/
+  padding: 20px;
+  text-align: left;
+}
+
+#resource {
+  font-size: 1em;
+  color: black;
+  margin: 12px 40px 25px 0px;
+}
+
+.copyright {
+  margin: 0 auto;
+  margin-top: 20px;
+  width: 600px;
+  font-size: 7pt;
+  font-weight: bold;
+  color: #EEEEEE;
+  text-align: center;
+  padding-bottom: 20px;
+}

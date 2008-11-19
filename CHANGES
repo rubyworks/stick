@@ -1,0 +1,17 @@
+= Stick Change History
+
+== 1.3.3 / 2007-12-21
+
+* Copies Ruby 1.9's matrix.rb library to matrix/core.rb. (This lib needs some love.)
+* Split Comins Bonchis' matrix extension into components.
+
+== 1.3.0 / 2007-12-20
+
+* Removed times.rb. WE can reconsider this type of functionaility later.
+* Decided to distribute under the MIT License.
+
+== 1.2.0 / 2007-12-14
+
+* Initial release as Stick.
+* Improved organization of library (eg. currency and constants are now separate).
+

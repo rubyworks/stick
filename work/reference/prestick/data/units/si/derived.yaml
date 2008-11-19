@@ -1,0 +1,133 @@
+--- 
+- 
+  type: import
+  file: si/base
+- 
+  name: radian
+  abbrev: rad
+  type: si
+  equals: ''
+  alias: radians
+- 
+  name: steradian
+  abbrev: sr
+  type: si
+  equals: ''
+  alias: steradians
+- 
+  name: hertz
+  abbrev: Hz
+  type: si
+  equals: 1/s
+- 
+  name: newton
+  abbrev: N
+  type: si
+  equals: kg*m/s**2
+  alias: newtons
+- 
+  name: pascal
+  abbrev: Pa
+  type: si
+  equals: N/m**2
+  alias: pascals
+- 
+  name: joule
+  abbrev: J
+  type: si
+  equals: N*m
+  alias: joules
+- 
+  name: watt
+  abbrev: W
+  type: si
+  equals: J/s
+  alias: watts
+- 
+  name: coulomb
+  abbrev: C
+  type: si
+  equals: A*s
+  alias: coulombs
+- 
+  name: volt
+  abbrev: V
+  type: si
+  equals: W/A
+  alias: volts
+- 
+  name: farad
+  abbrev: F
+  type: si
+  equals: C/V
+  alias: farads
+- 
+  name: ohm
+  type: si
+  equals: V/A
+  alias: ohms
+- 
+  name: siemens
+  abbrev: S
+  type: si
+  equals: A/V
+- 
+  name: weber
+  abbrev: Wb
+  type: si
+  equals: V*s
+  alias: webers
+- 
+  name: tesla
+  abbrev: T
+  type: si
+  equals: Wb/m**2
+  alias: teslas
+- 
+  name: henry
+  abbrev: H
+  type: si
+  equals: Wb/A
+  alias: henries
+- 
+  name: lumen
+  abbrev: lm
+  type: si
+  equals: cd*sr
+  alias: lumens
+- 
+  name: lux
+  abbrev: lx
+  type: si
+  equals: lm/m**2
+  alias: luxen
+- 
+  name: becquerel
+  abbrev: Bq
+  type: si
+  equals: 1/s
+  alias: becquerels
+- 
+  name: gray
+  abbrev: Gy
+  type: si
+  equals: J/kg
+  alias: grays
+- 
+  name: sievert
+  abbrev: Sv
+  type: si
+  equals: J/kg
+  alias: sieverts
+- 
+  name: katal
+  abbrev: kat
+  type: si
+  equals: mol/s
+  alias: katals
+- 
+  name: bar
+  abbrev: bar
+  type: si
+  equals: 100.0 kPa
+  alias: bars

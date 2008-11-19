@@ -1,0 +1,494 @@
+                Extended math library : Documentation
+
+Extmath version 2.3
+
+  Constants
+
+[ C | E | PI ]
+
+  Methods
+
+Powers and roots
+        [ hypot | pow | root | sqr | sqrt ]
+
+Exponential and logarithmic functions
+        [ exp | exp10 | exp2 | frexp | ldexp | log | log10 | log2 ]
+
+Trigonometric functions
+        [ acos | acot | acsc | asec | asin | atan | atan2 | cos | cot
+        | csc | sec | sin | tan ]
+
+Hyperbolic functions
+        [ acosh | acoth | acsch | asech | asinh | atanh | cosh | coth
+        | csch | sech | sinh | tanh ]
+
+Conversion between degree, gon and radian
+        [ deg2gon | deg2rad | gon2deg | gon2rad | rad2deg | rad2gon ]
+
+Special functions
+        [ beta | erf | erfc | lgamma | sinc | tgamma ]
+
+Absolute value, sign and rounding
+        [ abs | ceil | floor | round | sign ]
+
+Integer functions
+        [ delta | epsilon | factorial | gcd | lcm ]
+
+Solver
+        [ linsolve | sqsolve ]
+
+Constants
+
+Extmath::C
+        Euler's constant C, Extmath.C = 0.577_2...
+
+Extmath::E
+        Same as Math::E - Euler's number, Extmath.E = 2.718_182_8...
+
+Extmath::PI
+        Same as Math::PI - Ludolph's number, Extmath.PI = 3.141_59...
+
+Methods
+
+Extmath.abs(x)
+        Absolute value of x
+
+Extmath.acos(x)
+        Same as Math.acos(x) - arcus cotangens of x
+
+Extmath.acosh(x)
+        Same as Math.acosh(x) - area cosinus hyperbolicus of x
+
+Extmath.acot(x)
+        Arcus cotangens of x
+
+Extmath.acoth(x)
+        Area cotangens hyperbolicus of x
+
+Extmath.acsc(x)
+        Arcus cosecans of x
+
+Extmath.acsch(x)
+        Area cosecans hyperbolicus of x
+
+Extmath.asec(x)
+        Arcus secans of x
+
+Extmath.asech(x)
+        Area secans hyperbolicus of x
+
+Extmath.asin(x)
+        Same as Math.asin(x) - arcus sinus of x
+
+Extmath.asinh(x)
+        Same as Math.sinh(x) - area sinus hyperbolicus of x
+
+Extmath.atan(x)
+        Same as Math.atan(x) - arcus tangens of x
+
+Extmath.atan2(x, y)
+        Same as Math.atan2(x, y) - arcus tangens of x over y
+
+Extmath.atanh(x)
+        Same as Math.atanh(x) - area tangens hyperbolicus of x
+
+Extmath.beta(x, y)
+        Beta function of x and y - beta(x, y) = tgamma(x) * tgamma(y)
+        / tgamma(x + y)
+
+Extmath.ceil(x)
+        Smallest integer not smaller than x
+
+Extmath.cos(x)
+        Same as Math.cos(x) - cosinus of x
+
+Extmath.cosh(x)
+        Same as Math.cosh(x) - cosinus hyperbolicus of x
+
+Extmath.cot(x)
+        Cotangens of x
+
+Extmath.coth(x)
+        Cotangens hyperbolicus of x
+
+Extmath.csc(x)
+        Cosecans of x
+
+Extmath.csch(x)
+        Cosecans hyperbolicus of x
+
+Extmath.deg2gon(x)
+        Converts x form degree to gon
+
+Extmath.deg2rad(x)
+        Converts x form degree to radian
+
+Extmath.delta(i, j)
+        Kronecker symbol of i and j - 1 if i and j are equal, 0
+        otherwise
+
+Extmath.epsilon(i, j, k)
+        Levi-Civita symbol of i, j, and k - 1 if (i, j, k) is (1, 2,
+        3), (2, 3, 1), or (3, 1, 2), -1 if it is (1, 3, 2), (2, 1,
+        3), or (3, 2, 1), 0 as long as i, j, and k are all elements
+        of {1, 2, 3}, otherwise returns nil.
+
+Extmath.erf(x)
+        Same as Math.erf(x) - Gaußian error integral up to x
+
+Extmath.erfc(x)
+        Same as Math.erfc(x) - complementary Gaußian error integral
+        from x on
+
+Extmath.exp(x)
+        Same as Math.exp(x) - e to the power x
+
+Extmath.exp10(x)
+        10 to the power x
+
+Extmath.exp2(x)
+        2 to the power x
+
+Extmath.factorial(n)
+        1 * 2 * ... * n, nil for negative numbers
+
+Extmath.floor(x)
+        Largest integer not larger than x
+
+Extmath.frexp(x)
+        Same as Math.frexp(x) - two-element array containing the
+        normalized fraction and exponent of x.
+
+Extmath.gcd(m, n)
+        Greatest common divisor of m and n, nil for non-positive
+        numbers - gcd is computed by means of the Euklidian algorithm
+
+Extmath.gon2deg(x)
+        Converts x form gon to degree
+
+Extmath.gon2rad(x)
+        Converts x form gon to radian
+
+Extmath.hypot(x, y)
+        Same as Math.hypot(x, y) - length of hypotenuse of a
+        rectangular triangle with sides x and y.
+
+Extmath.lcm(m, n)
+        Least common multiple of m and n - computed by multiplying m
+        and n and dividing the product by the gcd of m and n, nil for
+        non-positive numbers.
+
+Extmath.ldexp(x, y)
+        x times 2 to the power y
+
+Extmath.lgamma(x)
+        Logarithmus naturalis of gamma function of x
+
+Extmath.linsolve(a, b, c)
+        Returns real solution(s) of ax + b = c or nil if no or an
+        infinite number of solutions exist. If c is missing it is
+        assumed to be 0.
+
+Extmath.log(x)
+        Same as Math.log(x) - logarithmus naturalis of x
+
+Extmath.log10(x)
+        Same as Math.log10(x) - logarithmus decimalis of x
+
+Extmath.log2(x)
+        Logarithmus dualis of x
+
+Extmath.pow(x, y)
+        x to the power y
+
+Extmath.rad2deg(x)
+        Converts x form radian to degree
+
+Extmath.rad2gon(x)
+        Converts x form radian to gon
+
+Extmath.root(x, y)
+        y-th root of x
+
+Extmath.round(x)
+        x rounded to nearest integer
+
+Extmath.sec(x)
+        Secans of x
+
+Extmath.sech(x)
+        Secans hyperbolicus of x
+
+Extmath.sign(x)
+        Sign of x - -1 for negative x, +1 for positive x and zero for
+        x = 0
+
+Extmath.sin(x)
+        Same as Math.sin(x) - sinus of x
+
+Extmath.sinc(x)
+        Sinc function of x
+
+Extmath.sinh(x)
+        Same as Math.sinh(x) - sinus hyperbolicus of x
+
+Extmath.sqr(x)
+        Square of x
+
+Extmath.sqrt(x)
+        Square root of x
+
+Extmath.sqsolve(a, b, c, d)
+        Returns array of real solution of ax**2 + bx + c = d or nil
+        if no or an infinite number of solutions exist. If d is
+        missing it is assumed to be 0. See Solving second order
+        equations
+
+Extmath.tan(x)
+        tangens of x
+
+Extmath.tanh(x)
+        tangens hyperbolicus of x
+
+Extmath.tgamma(x)
+        Gamma function of x
+
+Solving second order equations
+
+In order to solve ax**2 + bx + c = d Extmath.sqsolve identifies
+several cases:
+
+a == 0:
+        The equation to be solved is the linear equation bx + c = d.
+        Extmath.sqsolve delegates the computation to
+        Extmath.linsolve. If it results in nil, nil is returned (not
+        [nil]!). Otherwise a one-element array containing result of
+        Extmath.linsolve is returned.
+
+a != 0:
+        The equation to be solved actually is a second order one.
+
+             c == d
+                     The equation to be solved is ax**2 + bx = 0. One
+                     solution of this equation obviously is x = 0,
+                     the second one solves ax + b = 0. The solution
+                     of the latter is delegated to Extmath.linsolve.
+                     An array containing both results in ascending
+                     order is returned.
+
+             c != d
+                     The equation cannot be separated into x times
+                     some factor.
+
+                          b == 0
+                                  The equation to be solved is ax**2
+                                  + c = d. This can be written as the
+                                  linear equation ay + c = d with y =
+                                  x ** 2. The solution of the linear
+                                  equation is delegated to
+                                  Extmath.linsolve. If the returned
+                                  value for y is nil, that becomes
+                                  the overall return value. Otherwise
+                                  an array containing the negative
+                                  and positive square root of y is
+                                  returned
+
+                          b != 0
+                                  The equation cannot be reduced to
+                                  simpler cases. We now first have to
+                                  compute what is called the
+                                  discriminant x = b**2 + 4a(d - c)
+                                  (that's what we need to compute the
+                                  square root of). If the
+                                  descriminant is negative no real
+                                  solution exists and nil is
+                                  returned. The ternary operator
+                                  checking whether b is negative does
+                                  ensure better numerical stability -
+                                  only one of the two solutions is
+                                  computed using the widely know
+                                  formula for solving second order
+                                  equations. The second one is
+                                  computed from the fact that the
+                                  product of both solutions is (c -
+                                  d) / a. Take a look at a book on
+                                  numerical mathematics if you don't
+                                  understand why this should be done.
+
+Changelog
+
+  Version 2.2 -> 2.3
+
+    Renamed Constants/Functions
+
+  * ExtMath.pwr became Extmath.pow because pow is the C name for this
+    function.
+  * ExtMath.ln_gamma became Extmath.lgamma because lgamma is the C
+    name for this function.
+  * ExtMath.gamma became Extmath.tgamma because tgamma is the C name
+    for this function.
+
+    New Constants/Functions
+
+  * Extmath.deg2gon (degree to gon)
+  * Extmath.deg2rad (degree to gon)
+  * Extmath.gon2deg (gon to degree)
+  * Extmath.gon2rad (gon to radian)
+  * Extmath.rad2deg (radian to degree)
+  * Extmath.rad2gon (radian to gon)
+
+  Version 2.1 -> 2.2
+
+    Renamed Constants/Functions
+
+  * Extmath.acosech became Extmath.acsch
+  * Extmath.cosec became Extmath.csc
+  * Extmath.cosech became Extmath.csch
+
+    New Constants/Functions
+
+  * Extmath.acsc
+  * Extmath.asec
+  * Extmath.linsolve
+  * Extmath.round
+  * Extmath.sqsolve
+  * Extmath::C (Euler's constant C)
+
+    Changed Implementations/Values
+
+  * Extmath.abs
+  * Extmath.ceil
+  * Extmath.floor
+
+    Misc Changes
+
+  * README accidentally was that of tldlib. Corrected.
+  * Embedded documentation did contain old name ExtMath, not Extmath
+    - 'm' and 'M' almost look the same in the font I use. Corrected.
+  * Numerical constants were grouped using underbars to enhance
+    readability.
+  * Changelog was cleaned up, hyperlinks were added to HTML version.
+  * Much work was put into documentation.
+
+  Version 2.0 -> 2.1
+
+    New constants/functions
+
+  * Extmath.acosech
+  * Extmath.asech
+  * Extmath.delta
+  * Extmath.epsilon
+
+    Misc Changes
+
+  * New embedded documentation was written using RDtool
+  * Online documentation of library is now generated from embedded
+    documentation.
+  * HTML documentation contained in zip file has been replaced by
+    plain text equivalent generated by Elinks which is available at
+    elinks.or.cz.
+
+  Version 1.7 -> 2.0
+
+    Removed Constants/Functions
+
+  * Extmath.binomial
+  * Extmath.gaussian
+  * Extmath.sqsolve
+
+    Renamed Constants/Functions
+
+  * ExtMath.lngamma became Extmath.ln_gamma
+
+    Misc Changes
+
+  * Homepage was moved to extmath.rubyforge.org
+  * Download page was moved to Rubyforge
+  * Library now assumes Ruby 1.8
+  * Library was renamed from ExtMath to Extmath
+  * Embedded documentation was removed.
+  * HTML documentation was added to zip file.
+  * Demonstration program was replaced by test unit.
+
+  Version 1.6 -> 1.7
+
+    Changed implementations
+
+  * Bugfix: Value of @@InvLn2 was Math.log(2.0), corrected to 1.0 /
+    Math.log(2.0). Thanks to Joseph McDonald.
+
+  Version 1.5 -> 1.6
+
+    Misc Changes
+
+  * Documentation now uses RDTool
+  * Changelog now generated uses RDTool
+
+  Version 1.4 -> 1.5
+
+    New Constants/Functions
+
+  * ExtMath.gcd
+  * ExtMath.lcm
+
+  Version 1.3 -> 1.4
+
+  New Constants/Functions
+
+  * ExtMath.binomial
+  * ExtMath.gaussian
+  * ExtMath.sqsolve
+
+    Changed Implementations/Values
+
+  * ExtMath.log2
+  * ExtMath.factorial
+
+  Version 1.2 -> 1.3
+
+    New Constants/Functions
+
+  * ExtMath.beta
+  * ExtMath.ceil
+  * ExtMath.factorial
+  * ExtMath.floor
+
+    Changed Implementations/Values
+
+  * Extmath.lngamma
+  * ExtMath.gamma
+
+  Version 1.1 -> 1.2
+
+    New Constants/Functions
+
+  * ExtMath.abs
+  * ExtMath.gamma
+  * ExtMath.lngamma
+  * ExtMath.sign
+  * ExtMath.sinc
+
+  Version 1.0 -> 1.1
+
+    New Constants/Functions
+
+  * ExtMath.cosec
+  * ExtMath.cosech
+  * ExtMath.sec
+  * ExtMath.sech
+
+    Misc Changes
+
+  * Demonstration now also uses ExtMath.cosec, ExtMath.cosech,
+    ExtMath.sec, and ExtMath.sech.
+  * Small changes of Rubydoc documentation.
+
+  Version 1.0
+
+  * First public release
+
+  -----------------------------------------------------------------
+
+Last changed: 2003-08-29
+HTML to text by ELinks 0.4.3rc1 - Text WWW browser
+ELinks is vailable at http://elinks.or.cz/

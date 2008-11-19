@@ -1,0 +1,107 @@
+--- 
+- 
+  type: import
+  file: si/derived
+- 
+  name: minute
+  abbrev: min
+  type: unit
+  equals: 60.0 s
+  alias: minutes
+- 
+  name: hour
+  abbrev: h
+  type: unit
+  equals: 60.0 min
+  alias: hours
+- 
+  name: day
+  abbrev: d
+  type: unit
+  equals: 24.0 h
+  alias: days
+- 
+  name: liter
+  abbrev: L
+  type: unit
+  equals: dm**3
+  alias: liters
+- 
+  name: neper
+  abbrev: Np
+  type: unit
+  equals: ''
+  alias: nepers
+- 
+  name: electronvolt
+  abbrev: eV
+  type: unit
+  equals: 1.60218e-19 J
+  alias: electronvolts
+- 
+  name: are
+  abbrev: a
+  type: unit
+  equals: dam**2
+  alias: ares
+- 
+  name: hectare
+  abbrev: ha
+  type: unit
+  equals: hm**2
+  alias: hectares
+- 
+  name: barn
+  type: unit
+  equals: 100.0 fm**2
+  alias: barns
+- 
+  name: curie
+  abbrev: Ci
+  type: unit
+  equals: 3.7e10 Bq
+  alias: curies
+- 
+  name: roentgen
+  abbrev: R
+  type: unit
+  equals: 2.58e-4 kg
+  alias: roentgens
+- 
+  name: metric_ton
+  abbrev: t
+  type: unit
+  equals: 1000.0 kg
+  alias: metric_tons
+- 
+  name: degree
+  type: unit
+  equals: 0.0174532925199433 rad
+  alias: degrees
+- 
+  name: nautical_mile
+  type: unit
+  equals: 1852.0 m
+  alias: nautical_miles
+- 
+  name: knot
+  type: unit
+  equals: nautical_mile/h
+  alias: knots
+- 
+  name: angstrom
+  type: unit
+  equals: 100.0 kPa
+  alias: angstroms
+- 
+  name: unified_atomic_mass_unit
+  abbrev: u
+  type: unit
+  equals: 1.66054e-27 kg
+  alias: unified_atomic_mass_units
+- 
+  name: astronomical_unit
+  abbrev: ua
+  type: unit
+  equals: 1.49598e11 m
+  alias: astronomical_units

@@ -1,0 +1,103 @@
+= STICK
+
+  http://stick.rubyforge.org
+
+STICK stands for Scientific Code Kit. It's main feature is the
+a sophisticated SI units system. It also includes a large
+set of natural constants and some extensions for the Matrix
+class.
+
+
+== Installation
+
+You can install via Rubygems
+
+    gem install stick
+
+or via tarball
+
+    tar -xzf stick-x.y.z.tar.gz
+    cd stick
+    sudo task/setup
+
+(on Windows 'ruby task/setup')
+
+
+== Usage
+
+=== Units System
+
+Here are some examples of using the units system.
+
+    reqiure 'stick/units'
+
+    include Stick::Units
+
+    1.bit/s + 8.bytes/s
+    (1.bit/s).to(byte/s)
+    1.mile.to(feet)
+    1.acre.to(yd**2)
+    1.acre.to(sq_yd)
+    1.gallon.to(self.L)
+    1.lb.to(kg)
+    1.m.s.to(m.s)
+    1.sq_mi.to(km**2)
+    1.mile.to(km)
+
+The Units is namespace for all unit related classes. Mixing this in has
+the additional effect of making Units.with_unit_converter available
+without the <code>Units.</code> prefix, as well as the shortcuts for
+creating Units (see Units#method_missing).
+
+
+=== Constants
+
+Also included are a large assortment of real world contants. These come in two
+varieties, typeless and typed via units.rb. (PLEASE NOTE: The typed variety is not
+yet complete).
+
+Constants are also provided in both mks (m kg s) and in cgs (cm g s) format.
+
+    require 'stick/constants/typeless_mks'
+    require 'stick/constants/typeless_cgs'
+
+    include Stick::Constants::Typeless
+
+    MKS::SPEED_OF_LIGHT              #=> 2.99792458e8
+    CGS::SPEED_OF_LIGHT              #=> 2.99792458e10
+
+Big thanks to Daniel Carrera and Brian Gough for their original work on Math::Constants
+from which the typeless numbers derive.
+
+
+=== Extensions to the Ruby's Matrix
+
+Also included are Matrix extensions by Cosmin Bonchis, which was done
+as a Google Summer of Code 2007 project for Ruby Central Inc.
+
+The library consists of some enhancements to the Ruby "Matrix" module
+and includes: LU and QR (Householder, Givens, Gram Schmidt, Hessenberg)
+decompositions, bidiagonalization, eigenvalue and eigenvector calculations.
+
+This library is contatined in stick/matrix.rb, which also draws upon
+stick/mapcar.rb.
+
+This code can also be found on RubyForge at:
+  http://rubyforge.org/project/matrix.
+
+
+== Authors/Contributors
+
+* Peter Vanbroekhoven
+* Thomas Sawyer
+* Cosmin Bonchis
+* Daniel Carrera
+* Brian Gough
+
+
+== License
+
+Copyright 2006, 2007 Peter Vanbroekhoven, Thomas Sawyer
+
+Stick is distributed under the terms of the MIT license.
+

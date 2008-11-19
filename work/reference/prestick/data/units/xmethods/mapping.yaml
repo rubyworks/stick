@@ -1,0 +1,85 @@
+--- 
+:base: ron
+:mapping: 
+  chf: switzerland
+  fim: finland
+  pln: poland
+  bbd: barbados
+  dem: germany
+  usd: united states
+  sit: slovenia
+  krw: korea
+  idr: indonesia
+  mad: morocco
+  qar: qatar
+  all: albania
+  nok: norway
+  jpy: japan
+  lbp: lebanon
+  bmd: bermuda
+  egp: egypt
+  myr: malaysia
+  sar: saudi arabia
+  php: philippines
+  sgd: singapore
+  hrk: croatia
+  ats: austria
+  mur: mauritius
+  ars: argentina
+  itl: italy
+  pte: portugal
+  veb: venezuela
+  aed: united arib emirates
+  huf: hungary
+  kwd: kuwait
+  iep: ireland
+  clp: chile
+  dzd: algeria
+  ttd: trinidad
+  lkr: sri lanka
+  crc: costa rica
+  jod: jordan
+  nlg: netherlands
+  skk: slovakia
+  ron: romania
+  mtl: malta
+  cyp: cyprus
+  bef: belgium
+  mxn: mexico
+  zar: south africa
+  luf: luxembourg
+  cad: canada
+  hkd: hong kong
+  tnd: tunisia
+  omr: oman
+  xcd: east caribbean
+  jmd: jamaica
+  thb: thailand
+  sek: sweden
+  rub: russia
+  kes: kenya
+  pen: peru
+  vnd: vietnam
+  czk: czech republic
+  dkk: denmark
+  pkr: pakistan
+  bhd: bahrain
+  bdt: bangladesh
+  grd: greece
+  inr: india
+  isk: iceland
+  zmk: zambia
+  sdd: sudan
+  esp: spain
+  cop: colombia
+  frf: france
+  cny: china
+  gbp: united kingdom
+  twd: taiwan
+  aud: australia
+  dop: dominican republic
+  ils: israel
+  eur: euro
+  brl: brazil
+  nzd: new zealand
+  eek: estonia

@@ -1,0 +1,25 @@
+                   Extended math library : Remarks
+
+extmath does not implement Bessel functions, spherical harmonics,
+hypergeometric functions etc. I could implement them but the
+computation of that kind of functions is quite involved and
+error-prone so that in my opinion it is a bad idea to have more than
+one project that does implement them (bundle forces). I strongly
+suggest supporting the development of GSL (the GNU Scientific
+Library) and write Ruby bindings for this library.
+
+As far as the function names for area functions are concerned I did
+interpret the principle of least surprise that it requires
+consistency with the names already used by Ruby 1.8. In mathematical
+formulae
+
+  * Area cosinus hyperbolicus is not called acosh but arcosh.
+  * Area contangens hyperbolicus is not called atanh but artanh.
+  * Area sinus hyperbolicus is not called asinh but arsinh.
+  * Area tangens hyperbolicus is not called atanh but artanh.
+
+  -----------------------------------------------------------------
+
+Last changed: 2003-08-21
+HTML to text by ELinks 0.4.3rc1 - Text WWW browser
+ELinks is vailable at http://elinks.or.cz/

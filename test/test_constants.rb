@@ -1,0 +1,4 @@
+#
+
+require 'stick/constants'
+

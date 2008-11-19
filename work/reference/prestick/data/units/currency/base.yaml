@@ -1,0 +1,268 @@
+--- 
+- 
+  name: aed
+  type: currency
+- 
+  name: afa
+  type: currency
+- 
+  name: all
+  type: currency
+- 
+  name: ars
+  type: currency
+- 
+  name: ats
+  type: currency
+- 
+  name: aud
+  type: currency
+- 
+  name: bbd
+  type: currency
+- 
+  name: bdt
+  type: currency
+- 
+  name: bef
+  type: currency
+- 
+  name: bgn
+  type: currency
+- 
+  name: bhd
+  type: currency
+- 
+  name: bmd
+  type: currency
+- 
+  name: brl
+  type: currency
+- 
+  name: bsd
+  type: currency
+- 
+  name: cad
+  type: currency
+- 
+  name: chf
+  type: currency
+- 
+  name: clp
+  type: currency
+- 
+  name: cny
+  type: currency
+- 
+  name: cop
+  type: currency
+- 
+  name: crc
+  type: currency
+- 
+  name: cyp
+  type: currency
+- 
+  name: czk
+  type: currency
+- 
+  name: dem
+  type: currency
+- 
+  name: dkk
+  type: currency
+- 
+  name: dop
+  type: currency
+- 
+  name: dzd
+  type: currency
+- 
+  name: eek
+  type: currency
+- 
+  name: egp
+  type: currency
+- 
+  name: esp
+  type: currency
+- 
+  name: eur
+  type: currency
+- 
+  name: fim
+  type: currency
+- 
+  name: fjd
+  type: currency
+- 
+  name: frf
+  type: currency
+- 
+  name: gbp
+  type: currency
+- 
+  name: grd
+  type: currency
+- 
+  name: hkd
+  type: currency
+- 
+  name: hrk
+  type: currency
+- 
+  name: huf
+  type: currency
+- 
+  name: idr
+  type: currency
+- 
+  name: iep
+  type: currency
+- 
+  name: ils
+  type: currency
+- 
+  name: inr
+  type: currency
+- 
+  name: iqd
+  type: currency
+- 
+  name: irr
+  type: currency
+- 
+  name: isk
+  type: currency
+- 
+  name: itl
+  type: currency
+- 
+  name: jmd
+  type: currency
+- 
+  name: jod
+  type: currency
+- 
+  name: jpy
+  type: currency
+- 
+  name: kes
+  type: currency
+- 
+  name: krw
+  type: currency
+- 
+  name: kwd
+  type: currency
+- 
+  name: lbp
+  type: currency
+- 
+  name: lkr
+  type: currency
+- 
+  name: luf
+  type: currency
+- 
+  name: mad
+  type: currency
+- 
+  name: mtl
+  type: currency
+- 
+  name: mur
+  type: currency
+- 
+  name: mxn
+  type: currency
+- 
+  name: myr
+  type: currency
+- 
+  name: nlg
+  type: currency
+- 
+  name: nok
+  type: currency
+- 
+  name: nzd
+  type: currency
+- 
+  name: omr
+  type: currency
+- 
+  name: pen
+  type: currency
+- 
+  name: php
+  type: currency
+- 
+  name: pkr
+  type: currency
+- 
+  name: pln
+  type: currency
+- 
+  name: pte
+  type: currency
+- 
+  name: qar
+  type: currency
+- 
+  name: ron
+  type: currency
+- 
+  name: rub
+  type: currency
+- 
+  name: sar
+  type: currency
+- 
+  name: sdd
+  type: currency
+- 
+  name: sek
+  type: currency
+- 
+  name: sgd
+  type: currency
+- 
+  name: sit
+  type: currency
+- 
+  name: skk
+  type: currency
+- 
+  name: thb
+  type: currency
+- 
+  name: tnd
+  type: currency
+- 
+  name: try
+  type: currency
+- 
+  name: ttd
+  type: currency
+- 
+  name: twd
+  type: currency
+- 
+  name: usd
+  type: currency
+- 
+  name: veb
+  type: currency
+- 
+  name: vnd
+  type: currency
+- 
+  name: xcd
+  type: currency
+- 
+  name: zar
+  type: currency
+- 
+  name: zmk
+  type: currency

@@ -1,0 +1,15 @@
+= Stick's To Do List
+
+* Create a large collection of mathematical forumlae.
+
+* Would it be nice to have methods for contants? Eg. something like: Stick.speed_of_light ?
+
+* It might be nice if the units system could have an extra set of conversions
+  for handling calander nomencalture.
+
+* Maybe incorportate Algrebra library.
+
+* Are kilo, mega, etc. all powers of two or ten? Which is "right"?
+
+* Checkout http://www.crai.archi.fr/RubyLibraryDepot/Ruby/en_geo_page.htm
+

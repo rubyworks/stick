@@ -1,0 +1,12 @@
+--- 
+- 
+  name: bit
+  abbrev: b
+  type: binary
+  alias: bits
+- 
+  name: byte
+  abbrev: B
+  type: binary
+  equals: 8.0 b
+  alias: bytes

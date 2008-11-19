@@ -1,0 +1,43 @@
+We are happy to announce the first official release of Stick, the
+Scientific Code Kit for Ruby.
+
+  http://stick.rubyforge.org
+
+Stick is a spin-off of Facets' units.rb --the most excellent SI type
+system library by Peter Vanbroekhoven. This library, and its new
+cousin currency.rb, provide a very powerful system for working with SI
+typed and currency values in a Ruby-esque way. For example:
+
+  10.m / 10.s             #=> 1 m/s
+  1.bit/s + 8.bytes/s     #=> 65.0 bit/s
+  1.mile.to(feet)         #=> 5280.0 feet
+  1.acre.to(yd**2)        #=> 4840.0 yd**2
+
+Alson with the units system we've added a new matrix library which
+includes the Cosmin Bonchis extensions from his Google's Summer of
+Code 2007 project. Typed matrix operations are also possible:
+
+  Matrix[[1,2,3]] * 1.kg
+  => [[1 kg, 2 kg, 3kg ]]
+
+Fun! Fun! :)
+
+In addition to the units and matrix libraries, STICK has a large
+collection of natural constants, based on the original compilation by
+Daniel Carrera and Brian Gough (hats off to you guys!).
+
+The goal of the STICK project is to provide a valuable resource for
+science and math oriented developers who like to use Ruby. If you have
+any libraries that you feel would make a good fit, please let us know.
+And if you find this project useful please consider donating a little
+time to further polish it up.
+
+This is the first public release for this project --despite the
+version number ;) So please let us know if you run into any issues.
+Also, note that the currency conversions are not currently working --
+the back-end service we were using is no longer operational. We'll fix
+this as time permits.
+
+Thanks and enjoy,
+
+                   Trans & Peter

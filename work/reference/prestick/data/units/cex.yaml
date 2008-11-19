@@ -1,0 +1,7 @@
+--- 
+- 
+  name: CachedXMethods
+  type: service
+- 
+  type: import
+  file: currency/base
