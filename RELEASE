@@ -1,19 +1,19 @@
-We are happy to announce the first official release of Stick, the
-Scientific Code Kit for Ruby.
+We are happy to announce the next release of Stick, a Scientific Code
+Kit for Ruby.
 
-  http://stick.rubyforge.org
+  http://rubyworks.github.com/stick
 
 Stick is a spin-off of Facets' units.rb --the most excellent SI type
-system library by Peter Vanbroekhoven. This library, and its new
+system library by Peter Vanbroekhoven. This library, and its
 cousin currency.rb, provide a very powerful system for working with SI
-typed and currency values in a Ruby-esque way. For example:
+types and currency values in a Ruby-esque way. For example:
 
   10.m / 10.s             #=> 1 m/s
   1.bit/s + 8.bytes/s     #=> 65.0 bit/s
   1.mile.to(feet)         #=> 5280.0 feet
   1.acre.to(yd**2)        #=> 4840.0 yd**2
 
-Alson with the units system we've added a new matrix library which
+Also along with the units system we've added a new matrix library which
 includes the Cosmin Bonchis extensions from his Google's Summer of
 Code 2007 project. Typed matrix operations are also possible:
 

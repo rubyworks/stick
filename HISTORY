@@ -1,16 +1,32 @@
 = Stick Change History
 
+== 1.4.0 / TBD
+
+This version adds two additional classes taken from Ruby Facets,
+namely the Interval class and the Infinity class.
+
+Changes:
+
+* Added infinity.rb from Ruby Facets
+* Added interval.rb from RUby Facets
+
 == 1.3.3 / 2007-12-21
+
+Changes:
 
 * Copies Ruby 1.9's matrix.rb library to matrix/core.rb. (This lib needs some love.)
 * Split Comins Bonchis' matrix extension into components.
 
 == 1.3.0 / 2007-12-20
 
+Changes:
+
 * Removed times.rb. WE can reconsider this type of functionaility later.
 * Decided to distribute under the MIT License.
 
 == 1.2.0 / 2007-12-14
+
+Changes:
 
 * Initial release as Stick.
 * Improved organization of library (eg. currency and constants are now separate).
