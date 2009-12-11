@@ -1,4 +1,5 @@
 .cache
-doc/log
+pkg
+log
 doc/rdoc
 doc/ri
