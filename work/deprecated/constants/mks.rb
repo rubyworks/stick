@@ -22,15 +22,14 @@ module Constants
     # = Constants in the MKS system (meters, kg, sec)
     #
     # Large assortment of real world contants in standard m kg s types.
-    # The constants are stored in the Math::Constants::KMS module,
+    # The constants are stored in the Stick::Constants::MKS module,
     # but this is included in Math for direct use by other Math libraries.
     #
     # == Synopsis
     #
     #   Math::SPEED_OF_LIGHT                        #=> 2.99792458e8 m/s
-    #   Stick::Constants::SPEED_OF_LIGHT            #=> 2.99792458e8 m/s
     #   Stick::Constants::MKS::SPEED_OF_LIGHT       #=> 2.99792458e8 m/s
-
+    #
     module MKS
       include Units
 
