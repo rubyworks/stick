@@ -13,39 +13,37 @@
 #   - Daniel Carrera
 #   - Brian Gough
 #   - Thomas Sawyer
-
+#
 module Stick #:nodoc:
 module Constants
-module Typeless
-
-  # Unitless Constants in the CGS system (cm, kg, s)
-
-  module CGS
-    SPEED_OF_LIGHT           = 2.99792458e10     # cm / s
-    GRAVITATIONAL_CONSTANT   = 6.673e-8   # cm^3 / g s^2
-    PLANCKS_CONSTANT_H       = 6.62606876e-27 # g cm^2 / s
-    PLANCKS_CONSTANT_HBAR    = 1.05457159642e-27 # g cm^2 / s
-    VACUUM_PERMEABILITY      = 1.25663706144e-1 # cm g / A^2 s^2
-    ASTRONOMICAL_UNIT        = 1.49597870691e13 # cm
-    LIGHT_YEAR               = 9.46053620707e17   # cm
-    PARSEC                   = 3.08567758135e18   # cm
-    GRAV_ACCEL               = 9.80665e2 # cm / s^2
-    ELECTRON_VOLT            = 1.602176462e-12 # g cm^2 / s^2
-    MASS_ELECTRON            = 9.10938188e-28 # g
-    MASS_MUON                = 1.88353109e-25 # g
-    MASS_PROTON              = 1.67262158e-24 # g
-    MASS_NEUTRON             = 1.67492716e-24 # g
-    RYDBERG                  = 2.17987190389e-11 # g cm^2 / s^2
-    BOLTZMANN                = 1.3806503e-16   # g cm^2 / K s^2
-    BOHR_MAGNETON            = 9.27400899e-20  # A cm^2
-    NUCLEAR_MAGNETON         = 5.05078317e-23 # A cm^2
-    ELECTRON_MAGNETIC_MOMENT = 9.28476362e-20 # A cm^2
-    PROTON_MAGNETIC_MOMENT   = 1.410606633e-22  # A cm^2
-    MOLAR_GAS                = 8.314472e7      # g cm^2 / K mol s^2
-    STANDARD_GAS_VOLUME      = 2.2710981e4 # cm^3 / mol
-    MINUTE                   = 6e1     # s
-    HOUR                     = 3.6e3   # s
-    DAY                      = 8.64e4  # s
+module CGS
+  # Unitless Constants in the CGS system (cm, kg, s).
+  module Raw
+    SPEED_OF_LIGHT           = 2.99792458e10        # cm / s
+    GRAVITATIONAL_CONSTANT   = 6.673e-8             # cm^3 / g s^2
+    PLANCKS_CONSTANT_H       = 6.62606876e-27       # g cm^2 / s
+    PLANCKS_CONSTANT_HBAR    = 1.05457159642e-27    # g cm^2 / s
+    VACUUM_PERMEABILITY      = 1.25663706144e-1     # cm g / A^2 s^2
+    ASTRONOMICAL_UNIT        = 1.49597870691e13     # cm
+    LIGHT_YEAR               = 9.46053620707e17     # cm
+    PARSEC                   = 3.08567758135e18     # cm
+    GRAV_ACCEL               = 9.80665e2            # cm / s^2
+    ELECTRON_VOLT            = 1.602176462e-12      # g cm^2 / s^2
+    MASS_ELECTRON            = 9.10938188e-28       # g
+    MASS_MUON                = 1.88353109e-25       # g
+    MASS_PROTON              = 1.67262158e-24       # g
+    MASS_NEUTRON             = 1.67492716e-24       # g
+    RYDBERG                  = 2.17987190389e-11    # g cm^2 / s^2
+    BOLTZMANN                = 1.3806503e-16        # g cm^2 / K s^2
+    BOHR_MAGNETON            = 9.27400899e-20       # A cm^2
+    NUCLEAR_MAGNETON         = 5.05078317e-23       # A cm^2
+    ELECTRON_MAGNETIC_MOMENT = 9.28476362e-20       # A cm^2
+    PROTON_MAGNETIC_MOMENT   = 1.410606633e-22      # A cm^2
+    MOLAR_GAS                = 8.314472e7           # g cm^2 / K mol s^2
+    STANDARD_GAS_VOLUME      = 2.2710981e4          # cm^3 / mol
+    MINUTE                   = 6e1                  # s
+    HOUR                     = 3.6e3 # s
+    DAY                      = 8.64e4 # s
     WEEK                     = 6.048e5 # s
     INCH                     = 2.54e0  # cm
     FOOT                     = 3.048e1 # cm
@@ -120,7 +118,6 @@ module Typeless
     JOULE                    = 1e7     # g cm^2 / s^2
     ERG                      = 1e0     # g cm^2 / s^2
   end
-
 end
 end
 end
