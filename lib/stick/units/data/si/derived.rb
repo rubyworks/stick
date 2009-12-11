@@ -1,26 +1,29 @@
+# http://physics.nist.gov/cuu/Units/units.html
+
 require 'si/base'
 
 converter 'si_derived' do
-  si_unit "radian",    :abbrev => "rad", :equals => "",                                    :alias => "radians"
-  si_unit "steradian", :abbrev => "sr",  :equals => "",                                    :alias => "steradians"
-  si_unit "hertz",     :abbrev => "Hz",  :equals => "1 / si_base:s"
-  si_unit "newton",    :abbrev => "N",   :equals => "si_base:kg si_base:m / si_base:s**2", :alias => "newtons"
-  si_unit "pascal",    :abbrev => "Pa",  :equals => "N / si_base:m**2",                    :alias => "pascals"
-  si_unit "joule",     :abbrev => "J",   :equals => "N * si_base:m",                       :alias => "joules"
-  si_unit "watt",      :abbrev => "W",   :equals => "J / si_base:s",                       :alias => "watts"
-  si_unit "coulomb",   :abbrev => "C",   :equals => "si_base:A * si_base:s",               :alias => "coulombs"
-  si_unit "volt",      :abbrev => "V",   :equals => "W / si_base:A",                       :alias => "volts"
-  si_unit "farad",     :abbrev => "F",   :equals => "C / V",                               :alias => "farads"
-  si_unit "ohm",                         :equals => "V / si_base:A",                       :alias => "ohms"
-  si_unit "siemens",   :abbrev => "S",   :equals => "si_base:A / V"
-  si_unit "weber",     :abbrev => "Wb",  :equals => "V * si_base:s",                       :alias => "webers"
-  si_unit "tesla",     :abbrev => "T",   :equals => "Wb / si_base:m**2",                   :alias => "teslas"
-  si_unit "henry",     :abbrev => "H",   :equals => "Wb / si_base:A",                      :alias => "henries"
-  si_unit "lumen",     :abbrev => "lm",  :equals => "si_base:cd sr",                       :alias => "lumens"
-  si_unit "lux",       :abbrev => "lx",  :equals => "lm / si_base:m**2",                   :alias => "luxen"
-  si_unit "becquerel", :abbrev => "Bq",  :equals => "1 / si_base:s",                       :alias => "becquerels"
-  si_unit "gray",      :abbrev => "Gy",  :equals => "J / si_base:kg",                      :alias => "grays"
-  si_unit "sievert",   :abbrev => "Sv",  :equals => "J / si_base:kg",                      :alias => "sieverts"
-  si_unit "katal",     :abbrev => "kat", :equals => "si_base:mol / si_base:s",             :alias => "katals"
-  si_unit "bar",       :abbrev => "bar", :equals => "100.0 kPa",                           :alias => "bars"
+  si_unit( :radian    , :rad ){ "" }
+  si_unit( :steradian , :sr  ){ "" }
+  si_unit( :hertz     , :Hz  ){ "1 / si_base:s" }
+  si_unit( :newton    , :N   ){ "si_base:kg si_base:m / si_base:s**2" }
+  si_unit( :pascal    , :Pa  ){ "N / si_base:m**2"      }
+  si_unit( :joule     , :J   ){ "N * si_base:m"         }
+  si_unit( :watt      , :W   ){ "J / si_base:s"         }
+  si_unit( :coulomb   , :C   ){ "si_base:A * si_base:s" }
+  si_unit( :volt      , :V   ){ "W / si_base:A"         }
+  si_unit( :farad     , :F   ){ "C / V"                 }
+  si_unit( :ohm              ){ "V / si_base:A"         }
+  si_unit( :siemens   , :S   ){ "si_base:A / V"         }
+  si_unit( :weber     , :Wb             ){ "V * si_base:s"         }
+  si_unit( :tesla     , :T              ){ "Wb / si_base:m**2"     }
+  si_unit( :henry     , :H  , :henries  ){ "Wb / si_base:A"    }
+  si_unit( :lux       , :lx , :luxen    ){ "lm / si_base:m**2" }
+  si_unit( :lumen     , :lm             ){ "si_base:cd sr"           }
+  si_unit( :becquerel , :Bq             ){ "1 / si_base:s"           }
+  si_unit( :gray      , :Gy             ){ "J / si_base:kg"          }
+  si_unit( :sievert   , :Sv             ){ "J / si_base:kg"          }
+  si_unit( :katal     , :kat            ){ "si_base:mol / si_base:s" }
+
+  si_unit( :bar ){ "100.0 kPa" }
 end

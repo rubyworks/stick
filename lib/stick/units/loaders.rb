@@ -90,8 +90,8 @@ module Units
 
     handles 'unit'
 
-    def unit(converter, name, args)
-      converter.send(:register_unit, name, args)
+    def unit(converter, name, *args)
+      converter.send(:register_unit, name, *args)
     end
 
   end

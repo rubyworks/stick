@@ -1,23 +1,43 @@
 require 'si/base'
 
 converter 'us_base' do
-  length_unit "inch",          :abbrev => "in",    :equals => "2.54 si_base:cm",                :alias => "inches"
-  length_unit "foot",          :abbrev => "ft",    :equals => "12.0 in",                        :alias => "feet"
-  length_unit "yard",          :abbrev => "yd",    :equals => "3.0 ft",                         :alias => "yards"
-  length_unit "furlong",                           :equals => "220.0 yd",                       :alias => "furlongs"
-  length_unit "mile",          :abbrev => "mi",    :equals => "8.0 furlongs",                   :alias => "miles"
-  length_unit "acre",                              :equals => "4840.0 sq_yd",                   :alias => "acres"
-  unit        "section",                           :equals => "1.0 sq_mi",                      :alias => "sections"
-  unit        "township",                          :equals => "36.0 sections",                  :alias => "townships"
-  unit        "fluid_ounce",   :abbrev => "fl_oz", :equals => "2.95735295625e-2 si_base:dm**3", :alias => "fluid_ounces"
-  unit        "gill",                              :equals => "4.0 fl_oz",                      :alias => "gills"
-  unit        "pint",          :abbrev => "pt",    :equals => "4.0 gills",                      :alias => "pints"
-  unit        "quart",         :abbrev => "qt",    :equals => "2.0 pt",                         :alias => "quarts"
-  unit        "gallon",        :abbrev => "gal",   :equals => "4.0 qt",                         :alias => "gallons"
-  unit        "grain",         :abbrev => "gr",    :equals => "6.479891e-5 si_base:kg",         :alias => "grains"
-  unit        "ounce",         :abbrev => "oz",    :equals => "437.5 gr",                       :alias => "ounces"
-  unit        "pound",         :abbrev => "lb",    :equals => "16.0 oz",                        :alias => "pounds"
-  unit        "stone",                             :equals => "14.0 lb",                        :alias => "stones"
-  unit        "hundredweight", :abbrev => "cwt",   :equals => "100.0 lb",                       :alias => "hundredweights"
-  unit        "short_ton",     :abbrev => "st",    :equals => "20.0 cwt",                       :alias => "short_tons"
+  length_unit( :inch, :in        ){ "2.54 si_base:cm" }
+  length_unit( :foot, :ft, :feet ){ "12.0 in" }
+  length_unit( :yard, :yd        ){ "3.0 ft"  }
+  length_unit( :furlong          ){ "220.0 yd" }
+  length_unit( :mile, :mi        ){ "8.0 furlongs" }
+  length_unit( :acre             ){ "4840.0 sq_yd" }
+
+  unit( :section  ){ "1.0 sq_mi" }
+  unit( :township ){ "36.0 sections" }
+
+  unit( :fluid_ounce, :fl_oz ){ "2.95735295625e-2 si_base:dm**3" }
+  unit( :gill                ){ "4.0 fl_oz" }
+  unit( :cup                 ){ "8.0 fl_oz" }
+  unit( :pint, :pt           ){ "4.0 gills" }
+  unit( :quart, :qt          ){ "2.0 pt"    }
+  unit( :gallon, :gal        ){ "4.0 qt"    }
+  unit( :grain, :gr          ){ "6.479891e-5 si_base:kg" }
+  unit( :ounce, :oz          ){ "437.5 gr" }
+  unit( :pound, :lb          ){ "16.0 oz" }
+  unit( :stone               ){ "14.0 lb" }
+  unit( :hundredweight, :cwt ){ "100.0 lb" }
+  unit( :short_ton, :st      ){ "20.0 cwt" }
+
+  unit( :tablespoon, :Tbsp   ){ "1.47867647813e-5 si_base:m**3" } # FIXME
+  unit( :teaspoon, :tsp      ){ "4.92892159375e-6 si_base:m**3" } # FIXME
+
+  unit( :psi                 ){ "6.89475729317e3 kg / m s**2"  } # TODO: make per sqr inch
+
+  #unit( :miles_per_hour, :mph){ "m / si_extra:hr" }
 end
+
+
+#      POUND_MASS               = 4.5359237e-1.kg                        # kg
+#      OUNCE_MASS               = 2.8349523125e-2.kg                     # kg
+
+#      POUND_FORCE              = 4.44822161526e0.kg*m/s**2              # kg m / s^2
+#      KILOPOUND_FORCE          = 4.44822161526e3.kg*m/s**2              # kg m / s^2
+
+
+

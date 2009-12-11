@@ -31,8 +31,8 @@ module Units
 
     handles 'si_unit'
 
-    def si_unit(converter, name, args)
-      converter.send(:register_prefixed_unit, name, SI_PREFIXES, args)
+    def si_unit(converter, name, *args)
+      converter.send(:register_prefixed_unit, name, SI_PREFIXES, *args)
     end
 
   end
@@ -47,8 +47,8 @@ module Units
 
     handles 'length_unit'
 
-    def length_unit(converter, name, args)
-      converter.send(:register_prefixed_unit, name, LENGTH_PREFIXES, args)
+    def length_unit(converter, name, *args)
+      converter.send(:register_prefixed_unit, name, LENGTH_PREFIXES, *args)
     end
 
   end
@@ -69,8 +69,8 @@ module Units
 
     handles 'binary_unit'
 
-    def binary_unit(converter, name, args)
-      converter.send(:register_prefixed_unit, name, BINARY_PREFIXES, args)
+    def binary_unit(converter, name, *args)
+      converter.send(:register_prefixed_unit, name, BINARY_PREFIXES, *args)
     end
 
   end
@@ -101,8 +101,8 @@ module Units
 
     handles 'binary_iec_unit'
 
-    def binary_iec_unit(converter, name, args)
-      converter.send(:register_prefixed_unit, name, BINARY_IEC_PREFIXES, args)
+    def binary_iec_unit(converter, name, *args)
+      converter.send(:register_prefixed_unit, name, BINARY_IEC_PREFIXES, *args)
     end
 
   end

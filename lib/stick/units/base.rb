@@ -770,9 +770,15 @@ module Units
     #
     # See also +register_si_unit+, +register_binary_unit+, +register_binary_iec_unit+,
     # +register_length_unit+, and +register_currency+ in currency.rb.
-    def register_unit(name, data = {})
-      unit, aliases, abbrevs = extract_data(name, data, :to_sym)
-      conversion = data[:equals]
+    def register_unit(unit, abbrevs=[], aliases=[], &conversion)
+      unit    = unit.to_sym
+      abbrevs = [abbrevs].flatten.map{ |a| a.to_sym }
+      aliases = [aliases].flatten.map{ |a| a.to_sym }
+      #aliases = ["#{unit}s".to_sym] if aliases.empty? # TRANS: hmm... not here?
+      #unit, aliases, abbrevs = extract_data(name, data, :to_sym)
+      #conversion = data[:equals]
+      # TRANS: this can be imporved now that conversion is a block?
+      conversion = conversion.call if conversion
       conversion = decode_conversion(conversion) if conversion
       conversion = self.class.convert_conversion(conversion[:unit].units, conversion[:multiplier]) if conversion
       register_unit_internal(unit, conversion)
@@ -787,32 +793,32 @@ module Units
       @conversions[unit] = conversion || :none
     end
 
-    def register_prefixed_unit(unit, prefixes, data = {})
-      unit, aliases, abbrevs = extract_data(unit, data, :to_s)
-      register_unit(unit, :equals => data[:equals], :alias => aliases, :abbrev => abbrevs)
+    def register_prefixed_unit(unit, prefixes, abbrevs=[], aliases=[], &conversion)
+      unit = unit.to_s
+      abbrevs = [abbrevs].flatten.map{ |a| a.to_s }
+      aliases = [aliases].flatten.map{ |a| a.to_s }
+      aliases = ["#{unit}s"] if aliases.empty?
+      #aliases, abbrevs = extract_data(unit, data, :to_s)
+      register_unit(unit, abbrevs, aliases, &conversion)
       unit_sym = unit.to_sym
       prefixes.each_pair do |pre,info|
-        abbrev = info[:abbrev]
+        abbrev     = info[:abbrev]
         multiplier = info[:multiplier] || 1
-        power = info[:power] || 1
-        register_unit(pre + unit, :equals => {:unit => Units::Unit.new({unit_sym => power}, self), :multiplier => multiplier})
+        power      = info[:power] || 1
+        register_unit(pre + unit) do
+          {:unit => Units::Unit.new({unit_sym => power}, self), :multiplier => multiplier}
+        end
         aliases.each do |a|
-          register_unit(pre + a, :equals => {:unit => Units::Unit.new({unit_sym => power}, self), :multiplier => multiplier})
+          register_unit(pre + a) do
+            {:unit => Units::Unit.new({unit_sym => power}, self), :multiplier => multiplier}
+          end
         end
         abbrevs.each do |a|
-          register_unit(abbrev + a, :equals => {:unit => Units::Unit.new({unit_sym => power}, self), :multiplier => multiplier})
+          register_unit(abbrev + a) do
+            {:unit => Units::Unit.new({unit_sym => power}, self), :multiplier => multiplier}
+          end
         end
       end
-    end
-
-    def extract_data(unit, data, conv)
-      sarray = proc do |k|
-        list = data[k] || []
-        list = [list] if not list.is_a? Array
-        list.map { |a| a.send(conv) }
-      end
-      unit = unit.send(conv)
-      return unit, sarray[:alias], sarray[:abbrev].select { |a| a != unit }
     end
 
     def decode_conversion(data)
