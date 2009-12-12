@@ -27,7 +27,11 @@ converter 'us_base' do
   unit( :tablespoon, :Tbsp   ){ "1.47867647813e-5 si_base:m**3" } # FIXME
   unit( :teaspoon, :tsp      ){ "4.92892159375e-6 si_base:m**3" } # FIXME
 
-  unit( :psi                 ){ "6.89475729317e3 kg / m s**2"  } # TODO: make per sqr inch
+  unit( :psi                 ){ "6.89475729317e3 kg / m s**2"  }  # FIXME: make per sqr inch
+
+  unit :footcandle   do "1.076e1 cd * sr / m**2"    end                # cd sr / m^2
+  unit :lambert      do "1e4.cd sr / m**2"          end                # cd sr / m^2
+  unit :footlambert  do "1.07639104e1 cd sr / m**2" end                # cd sr / m^2
 
   #unit( :miles_per_hour, :mph){ "m / si_extra:hr" }
 end

@@ -15,20 +15,14 @@ module Stick
   # You should have received a copy of the GNU General Public License along with this program; if not, write to the
   # Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA.
 
-  # === Constants
+  # == Constants
   #  +C+, +E+, +PI+
   #
-  # === Methods
+  # == Methods
   # * Powers and roots
-  #   +hypot+, +pow+, +root+, +sqr+, +sqrt+
+  #   +pow+, +root+, +sqr+, +sqrt+
   # * Exponential and logarithmic functions
   #   +exp+, +exp10+, +exp2+, +frexp+, +ldexpldexp+, +loglog+, +log10log10+, +log2log2+
-  # * Trigonometric functions
-  #   +acos+, +acot+, +acsc+, +asec+, +asin+, +atan+, +atan2+, +cos+, +cot+, +csc+, +sec+, +sin+, +tan+
-  # * Hyperbolic functions
-  #   +acosh+, +acoth+, +acsch+, +asech+, +asinh+, +atanh+, +cosh+, +coth+, +csch+, +sech+, +sinh+, +tanh+
-  # * Conversion between degree, gon and radian
-  #   +deg2gon+, +deg2rad+, +gon2deg+, +gon2rad+, +rad2deg+, +rad2gon+
   # * Special functions
   #   +beta+, +erf+, +erfc+, +lgamma+, +sinc+, +tgamma+
   # * Absolute value, sign and rounding
@@ -40,18 +34,10 @@ module Stick
   #
   module Math
     include ::Math
-
     extend self
 
-    Inv_ln_2	  = 1.0 / Math.log(2.0)
-    Gauss_factor  = Math.sqrt(0.5 / Math::PI)
-
-    Deg2gon = 10.0 / 9.0
-    Deg2rad = Math::PI / 180.0
-    Gon2deg = 0.9
-    Gon2rad = Math::PI / 200.0
-    Rad2deg = 180.0 / Math::PI
-    Rad2gon = 200.0 / Math::PI
+    Inv_ln_2	   = 1.0 / ::Math.log(2.0)
+    Gauss_factor = ::Math.sqrt(0.5 / Math::PI)
 
     Factorials = [ 
       1,
@@ -76,7 +62,7 @@ module Stick
     C = 0.577_215_664_901_532_861
 
     # Same as <code>Math::E</code> - Euler's number, <code>Extmath.E = 2.718_182_8...</code>
-    E = Math::E
+    E = ::Math::E
 
     # Absolute value of +x+
     def abs(x)
@@ -92,16 +78,6 @@ module Stick
     # Smallest integer not smaller than +x+
     def ceil(x)
       x.ceil
-    end
-
-    # Converts +x+ form degree to gon
-    def deg2gon(x)
-      return Deg2gon * x
-    end
-
-    # Converts +x+ form degree to radian
-    def deg2rad(x)
-      return Deg2rad * x
     end
 
     # Kronecker symbol of +i+ and +j+ - 1 if +i+ and +j+ are equal, 0 otherwise
@@ -128,17 +104,17 @@ module Stick
 
     # Same as <code>Math.erf(+x+)</code> - Gauﬂian error integral up to +x+
     def erf(x)
-      Math.erf(x)
+      ::Math.erf(x)
     end
 
     # Same as <code>Math.erfc(+x+)</code> - complementary Gauﬂian error integral from +x+ on
     def erfc(x)
-      Math.erfc(x)
+      ::Math.erfc(x)
     end
 
     # Same as <code>Math.exp(+x+)</code> - e to the power +x+
     def exp(x)
-      Math.exp(x)
+      ::Math.exp(x)
     end
 
     # 10 to the power +x+
@@ -193,21 +169,6 @@ module Stick
         m = l
       }
       n
-    end
-
-    # Converts +x+ form gon to degree
-    def gon2deg(x)
-      return Gon2deg * x
-    end
-
-    # Converts +x+ form gon to radian
-    def gon2rad(x)
-      return Gon2rad * x
-    end
-
-    # Same as <code>Math.hypot(+x+, +y+)</code> - length of hypotenuse of a rectangular triangle with sides +x+ and +y+.
-    def hypot(x, y)
-      Math.hypot(x, y)
     end
 
     # Least common multiple of +m+ and +n+ - computed by multiplying +m+ and +n+ and dividing the product by the gcd
@@ -299,9 +260,10 @@ module Stick
       x * x
     end
 
-    #def sqrt(x)
-    #  Math.sqrt(x)
-    #end
+    #
+    def sqrt(x)
+      ::Math.sqrt(x)
+    end
 
     # Returns array of real solution of <code>ax**2 + bx + c = d</code>
     # or <code>nil</code> if no or an infinite number of solutions exist.
@@ -353,6 +315,7 @@ module Stick
       end
     end
 
+    #
     def gamma(x)
       exp(lgamma(x))
     end
