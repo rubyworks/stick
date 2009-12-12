@@ -13,7 +13,7 @@ converter 'si_derived' do
   si_unit( :coulomb,    :C   ){ "si_base:A * si_base:s"   }
   si_unit( :volt,       :V   ){ "W / si_base:A"           }
   si_unit( :farad,      :F   ){ "C / V"                   }
-  si_unit( :ohm,             ){ "V / si_base:A"           }
+  si_unit( :ohm              ){ "V / si_base:A"           }
   si_unit( :siemens,    :S   ){ "si_base:A / V"           }
   si_unit( :weber,      :Wb  ){ "V * si_base:s"           }
   si_unit( :tesla,      :T   ){ "Wb / si_base:m**2"       }

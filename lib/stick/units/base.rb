@@ -949,8 +949,8 @@ module Units
     # The directory in which the data files are searched for
     #DATADIR = 'data/stick/units'  #DATADIR = File.join(::Config::CONFIG['DATADIR'], 'stick', 'units')
     #CONFIGDIR = 'lib/stick/data'  #DATADIR = File.join(::Config::CONFIG['DATADIR'], 'stick', 'units')
-    SYSTEMDIR = File.dirname(File.dirname(File.dirname(__FILE__)))
-    CONFIGDIR = File.join(SYSTEMDIR, 'plugin/stick')
+    SYSTEMDIR = File.dirname(__FILE__)
+    CONFIGDIR = File.join(SYSTEMDIR, 'data')
   end
 
 end
