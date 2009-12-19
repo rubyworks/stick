@@ -5,6 +5,7 @@ require 'si/base'
 converter 'si_derived' do
   si_unit( :radian,     :rad ){ "" }
   si_unit( :steradian,  :sr  ){ "" }
+
   si_unit( :hertz,      :Hz  ){ "1 / si_base:s"           }
   si_unit( :newton,     :N   ){ "si_base:kg si_base:m / si_base:s**2" }
   si_unit( :pascal,     :Pa  ){ "N / si_base:m**2"        }
