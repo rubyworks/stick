@@ -13,69 +13,201 @@ module Stick
 
     include Comparable
 
-    # For working with unit multiples.
-    attr :multiple
+    # New unit has a +power+.
+    #
+    # The +multiple+ argument is not currenly used; it is always 1.
+
+    def initialize(type, power=1, multiple=1)
+      @type     = type
+      @power    = power
+      @multiple = 1 #multiple
+    end
+
+    # I N F O R M A T I O N
+
+    # Unit type.
+    attr :type
 
     # For working with squares, curbics, and so forth.
     attr :power
 
-    # A base measure has a +multiple+ and a +power+.
-    def initialize(power=1, multiple=1)
-      @power    = power
-      @multiple = multiple
+    # TODO: For working with unit multiples (currently is fixed to 1).
+    attr :multiple
+
+    #
+
+    def symbol
+      type.symbol
     end
 
     #
-    def symbol ; self.class.symbol ; end
+
+    def term
+      @term ||= (type.plural || type.name)
+    end
 
     #
-    def term ; self.class.term ; end
+
+    def system
+      type.system
+    end
 
     #
-    def single ; self.class.single ; end
+
+    def kind
+      type.kind
+    end
 
     #
-    def system ; self.class.system ; end
 
-    # Convert to <i>measure</i>.
-    def to_m
+    def base?
+      type.base?
+    end
+
+
+    # C O N V E R S I O N
+
+=begin
+    #
+
+    def self.from_universal(measure)
+      from_au(measure)
+    end
+
+    # Return a measure of this unit type.
+
+    def self.^(power)
+      Measure.new(new(power))
+    end
+
+    # Return a measure of this unit type.
+
+    def self.[](power=1, value=1)
+      Measure.new(value, new(power))
+    end
+
+    # Return a measure of this unit type.
+
+    def self.measure(value=1, power=1)
+      Measure.new(value, new(power))
+    end
+=end
+
+    # Convert to a unit +Measure+.
+    def measure
       Measure.new(1, self)
     end
 
-    # Convert to <i>base measure</i>.
-    def to_base
-      __send__("to_#{Stick.system}")
-      #Measure.new(1, self)
-    end
+    # Convert to a +Measure+.
+    alias_method :to_m, :measure
 
     #
-    def invert
-      self.class.new(-power, multiple)
-    end
-
-    #
-    def **(number)
-      self.class.new(power*number, multiple)
-    end
-
-    #
-    def to_s
-      s = symbol ? symbol.to_s : term.to_s
-      if multiple != 1
-        s = "(#{multiple} #{s})"
+    def to_system(sys)
+      return self if system == sys
+      conv = type.conversions.find{ |c| c.system == sys }
+      if conv
+        conv.call #(self)
+      else
+        base.to_system(sys)
       end
+    end
+
+    # Convert to AU units of measure.
+
+    def to_au
+      return self if system == :au
+      conv = type.conversions.find{ |c| c.system == :au }
+      if conv
+        conv.call #(self)
+      else
+        base.universal
+      end
+    end
+
+    # Convert to universal system of measure.
+
+    def universal
+      to_au
+    end
+
+    # If the unit is a derived unit, convert it the base
+    # units of it's system.
+
+    def base
+      if type.base?
+        self
+      else
+        type.base #(self)
+      end
+    end
+
+    # Convert to standard system of measure. The selected system can be
+    # changed via the Stick.system method.
+    #--
+    # TODO: Improve register to make lookup faster.
+    #++
+
+    def standard
+      # lookup system unit of same kind and is base unit
+      conv = type.conversions.find do |c|
+        c.base? &&
+        c.kind == kind &&
+        c.system == Stick.system
+      end
+      #unit = Unit.register.find do |u|
+      #  u.base? &&
+      #  u.type == self.type &&
+      #  u.system == Stick.system
+      #end
+      # convert to univesral and from universal to standard
+      #unit.from_universal(universal)
+      conv.call(universal)
+    end
+
+    # Short-cut for #standard.
+
+    alias_method :std, :standard
+
+    #
+
+    def unit ; self ; end
+
+    # Display unit type.
+    #def to_s
+    #end
+
+    # Show unit type in terms of it's symbol and power.
+
+    def to_s
+       s = symbol ? symbol.to_s : term.to_s
+      #if multiple != 1
+      #  s = "(#{multiple} #{s})"
+      #end
       if power != 1
         s = s + (power > 0 ? "^#{power}" : "#{power}")
       end
       s
     end
 
+
+    # O P E R A T I O N S
+
     #
-    alias_method :inspect, :to_s
+    def invert
+      self.class.new(type, -power, multiple)
+    end
+
+    #
+    def **(number)
+      self.class.new(type, power*number, multiple)
+    end
+
+
+    # C O M P A R I S O N S
 
     # sortable by term
     def <=>(other)
-      term <=> other.term
+      term.to_s <=> other.term.to_s
     end
 
     # Compare value and units.
@@ -88,27 +220,25 @@ module Stick
 
     # Compare value and units.
     def ==(other)
-      return false unless self.class == other.class
+      return false unless type == other.type
       return false unless power == other.power
-      return false unless multiple == other.multiple
+      #return false unless multiple == other.multiple
       return true
     end
 
-    # Compare units.
-    #def ===(other)
-    #  return false unless self.class == other.class
-    #  return false unless power == other.power
-    #  #return false unless multiple == other.multiple
-    #  return true
-    #end
+    # Compare unit types.
+    def ===(other)
+      return false unless self.type == other.type
+      return true
+    end
 
     # Reduce +self+ and +other+ to their least common measures,
     # if +other+ has all the base unit classes of +self+, in less
     # or equal power, then +self+ is a *factor* of the +other+.
 
     def factor?(other)
-      s =  self.to_lcm.unit.map{ |u| [u.class] * u.power }.flatten
-      o = other.to_lcm.unit.map{ |u| [u.class] * u.power }.faltten
+      s =  self.base.unit.map{ |u| [u.type] * u.power }.flatten
+      o = other.base.unit.map{ |u| [u.type] * u.power }.faltten
       (s - o).empty?
     end
 
@@ -117,97 +247,111 @@ module Stick
     # of their power, then they are said to be *commensurate* units.
 
     def commensurate?(other)
-      s =  self.to_lcm.unit.map{ |u| u.class }.uniq
-      o = other.to_lcm.unit.map{ |u| u.class }.uniq
+      s =  self.base.unit.map{ |u| u.type }.uniq
+      o = other.base.unit.map{ |u| u.type }.uniq
       (s - o).empty? && (o - s).empty?
     end
 
-    # Reduce +self+ and the +other+ unit to their least comon
-    # measures, if the +other+ has all the same unit classes
-    # in equal power as +self+, then they are said to be
-    # *proportional* units, i.e. their ratio would produce
-    # a unitless number.
+    # Reduce +self+ and the +other+ unit to their base measure.
+    # If the +other+ has all the same unit types in equal power
+    # as +self+, then they are said to be *proportional* units,
+    # i.e. their ratio would produce a unitless number.
 
     def proportional?(other)
-      s =  self.to_lcm.unit.map{ |u| u.class }
-      o = other.to_lcm.unit.map{ |u| u.class }
+      s =  self.base.unit.map{ |u| u.type }
+      o = other.base.unit.map{ |u| u.type }
       (o - s).empty? && (s - o).empty?
     end
 
-    #
-    def unit ; self ; end
+
 
 
     # C L A S S  M E T H O D S
 
-    def self.symbol
-      self::SYMBOL
-    end
-
-    # Plural term.
-    def self.term
-      name.split('::').last.downcase + 's'
-    end
-
-    # Singular term.
-    def self.single
-      name.split('::').last.downcase
-    end
+    #
+    #def self.symbol ; self::SYMBOL ; end
 
     #
-    def self.system
-      eval('::'+name.split('::')[0..-2].join('::'))
-    end
+    #def self.type   ; self::TYPE   ; end
 
-    # Convert from <i>least common measure</i>.
-    #
-    def self.base(measure)
-      #measure
-      __send__(Stick.system, measure)
-    end
+    # A Unit is a base unit if it includes the Base module.
+    #def self.base?  ; self <= Base ; end
 
-    #
-    def self.inherited(base)
-      register << base
-    end
+    # Common term for unit in the plural. Defaults to
+    # class basename downcased plus an 's'.
+    #def self.term
+    #  name.split('::').last.downcase + 's'
+    #end
 
-    #
-    def self.register
-      @@register ||= []
-    end
+    # Singular term defaults to class basename
+    # downcased.
+    #def self.single
+    #  name.split('::').last.downcase
+    #end
 
     #
-    def self.conversion(system, unit, factor)
-      define_method("to_#{system}") do
-        Measure.new(factor, unit.new(power))
-      end
-      (class < self; self; end).class_eval %{
-        def #{system}(measure=nil)
-          if measure
-            measure.reduce # just in case
-            raise ArgumentError unless measure.commensurate?(1.__send__(:#{unit}))
-            power = measure.units.first.power
-            Measure.new(measure.value * (factor ** -1), new(power))
-          else
-            Measure.new(new)
-          end
-        end
-      }
-    end
+    #def self.system
+    #  eval('::'+name.split('::')[0..-2].join('::'))
+    #end
+
+    # Convert from.
+    #
+    #def self.base(measure)
+    #  __send__(Stick.system, measure)
+    #end
 
     #
-    def self.setup
-      register.each do |base|
-        names = [base.symbol, base.term, base.single].compact.uniq
-        names.each do |name|
-          ::Numeric.class_eval do
-            define_method(name){ Measure.new(self, base.new) }
-          end
-        end
-      end
-    end
+    #def self.inherited(base)
+    #  return unless base.basename != "Unit"
+    #  register << base
+    #end
+
+    #
+    #def self.register
+    #  @@register ||= []
+    #end
+
+    #def self.from_natural_measure(measure)
+    #  raise "not implemented"
+    #end
+
+    #
+    #def self.num(measure)
+    #  measure = measure.num #measure.reduce
+    #  #raise ArgumentError unless measure.commensurate?(nu)
+    #  raise ArgumentError unless power = measure.base?(self)
+    #  Measure.new(measure.value * (factor ** -1), new(power))
+    #end
+
+    #
+    #def self.conversion(system, unit, factor)
+    #  define_method("to_#{system}") do
+    #    Measure.new(factor, unit.new(power))
+    #  end
+    #  (class << self; self; end).class_eval <<-END
+    #    def #{system}(measure)
+    #      measure = measure.to_#{system} #measure.reduce
+    #      #raise ArgumentError unless measure.commensurate?(#{system})
+    #      #power = measure.units.first.power
+    #      raise ArgumentError unless power = measure.base?(self)
+    #      Measure.new(measure.value * (factor ** -1), new(power))
+    #    end
+    #  END
+    #end
 
   end
+
+  #
+  #module Unit::Base
+  #
+  #  def base?; true; end
+  #
+  #  #
+  #  def base
+  #    measure
+  #  end
+  #
+  #end
 
 end
 
