@@ -1,0 +1,121 @@
+= Unit Equality
+
+Equality is a broader issue for unit systems, then it is for
+the usual type system, since two aspect of a thing are being
+compared, the measures value and it's unit.
+
+== Case Equality
+
+Check value equality of prime units.
+
+    1.g.assert  === 1.g
+    1.kg.assert === 1.kg
+    1.N.assert  === 1.N
+
+    1.g.assert  === 10.g
+    1.kg.assert === 10.kg
+    1.N.assert  === 10.N
+
+
+== Value Equality
+
+Check value equality of prime units.
+
+    1.g.assert  == 1.g
+    1.kg.assert == 1.kg
+    1.km.assert == 1.km
+
+    1.g.refute  == 10.g
+    1.kg.refute == 10.kg
+    1.km.refute == 10.km
+
+Check value equality of commensurate prime units.
+
+    1.kg.assert == 1000.g
+    1.km.assert == 1000.m
+
+    1000.g.assert == 1.kg
+    1000.m.assert == 1.km
+
+Check value equality of compound units.
+
+    1.g.m.assert  == 1.g.m
+    1.kg.m.assert == 1.kg.m
+
+    1.m.g.assert  == 1.g.m
+    1.m.kg.assert == 1.kg.m
+
+Check value equality of commensurate compound units.
+
+    1.kg.m.assert == 1000.g.m
+    1.km.s.assert == 1000.m.s
+
+    1.m.kg.assert == 1000.g.m
+    1.s.km.assert == 1000.m.s
+
+    1.s.kg.refute == 1000.g.m
+
+
+== Unit Equality
+
+Check unit equality of like units.
+
+    1.g.assert.equals? 1.g
+    1.kg.assert.equals? 1.kg
+    1.km.assert.equals? 1.km
+
+Check unit inequality of commensutate units.
+
+    1.kg.refute.equals? 1000.g
+    1.km.refute.equals? 1000.m
+
+    1000.g.refute.equals? 1.kg
+    1000.m.refute.equals? 1.km
+
+Check unit equality of compound units.
+
+    1.g.m.assert.equals? 1.g.m
+    1.kg.m.assert.equals? 1.kg.m
+
+    1.m.g.assert.equals? 1.g.m
+    1.m.kg.assert.equals? 1.kg.m
+
+
+== Identity Equality
+
+TODO: Check identity equality of like units.
+This may need fixing.
+
+    1.g.assert.eql? 1.g
+    1.kg.assert.eql? 1.kg
+    1.km.assert.eql? 1.km
+
+
+== Commensurate Equality
+
+Two measures are commensurate when their units ar the
+same or can be converted to be the same, irregardless
+of the powers of those units.
+
+  1.kg.assert.commensurate? 1.kg
+  1.kg.assert.commensurate? 1.g
+
+  1.kg.assert.commensurate? 1.kg**2
+  1.kg.assert.commensurate? 1.g**2
+
+
+== Proportional Equality
+
+Two measures are proportional when their units are
+exactly the same or can be converted to be exactly 
+the same --including their power.
+
+  1.kg.assert.proportional? 1.kg
+  1.kg.assert.proportional? 1.g
+
+  1.kg.refute.proportional? 1.kg**2
+
+---
+require 'helper'
+require 'stick2'
+

@@ -1,0 +1,14 @@
+= Unit Conversions
+
+    require 'stick2'
+
+Check conversions to same type.
+
+    1.g.to(1.g).assert == 1.g
+    1.kg.to(1.kg).assert == 1.kg
+
+Check conversions of simple multiples.
+
+    1.kg.to(1.g).assert == 1000.g
+    1.km.to(1.m).assert == 1000.m
+

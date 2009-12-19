@@ -1,0 +1,71 @@
+= Unit Operations
+
+Unit operations include all the typical numerical
+operations.
+
+== Unit Power
+
+Unit power is used to create a measure of a squared,
+cubic or higher diemension units. It works just like
+the normal power method (#**) except that it leaves
+the measure numerical value unchanged.
+
+  (1.m^2).assert == 1.m * 1.m
+  (2.m^2).assert == 2.m * 1.m
+
+
+== Power
+
+  (1.m ** 2).assert == 1.m * 1.m
+  (2.m ** 2).assert == 2.m * 2.m
+
+
+== Multiplication
+
+Multiplication with scalars.
+
+  (1.m * 1).assert == 1.m
+  (1.m * 2).assert == 2.m
+  (3.m * 2).assert == 6.m
+
+Multiplication of like units.
+
+  (1.m * 1.m).assert == 1.m^2
+  (2.m * 3.m).assert == 6.m^2
+
+  (2.m * 3.m * 4.m).assert == 24.m^3
+
+Multiplication of unlike units.
+
+  (1.m * 2.g).assert == 1.m * 1.g * 2
+
+
+== Division
+
+Division with like units.
+
+  ((2.m^2) / 2.m).assert == 1.m
+
+Division with scalars.
+
+  (1.m / 1.m).assert == 1
+  (2.m / 1.m).assert == 2
+
+
+== Addition
+
+  (1.m + 1.m).assert == 2.m
+
+
+== Subtraction
+
+  (2.m - 1.m).assert == 1.m
+
+
+== Inversion
+
+  2.m.invert.assert == 0.5 * (1.m^-1)
+
+---
+require 'stick2'
+
