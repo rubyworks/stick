@@ -14,6 +14,7 @@ module Units
     Am = 10**18  # Exa
     Aq = 10**18  # Exa
     Ao = 10**24  # Yotta
+    Ae = 10**24  # Yotta
 
     # Speed of light
     attr :c
@@ -32,33 +33,50 @@ module Units
 
     #
     def initialize(c, g, h, u, k)
-      @c, @g, @h, @u, @k = c, g, h, u, k     
+      @c, @g, @h, @u, @k = c, g, h, u, k
+
+      @S = Math.sqrt(h * 8 * PI * g / c ** 3)
+      @T = Math.sqrt(h * 8 * PI * g / c ** 5)
+      @M = Math.sqrt(h * c / 8 * PI * g)
+      @Q = Math.sqrt(h * 4 * PI / c * u)
+      @O = Math.sqrt(h * c ** 5 / 2 * PI * g * k ** 2)
+      @E = Math.sqrt(h * c ** 5 / 2 * PI * g)
     end
 
-    def S ; Math.sqrt(h * 8 * PI * g / c ** 3)          ; end
-    def T ; Math.sqrt(h * 8 * PI * g / c ** 5)          ; end
-    def M ; Math.sqrt(h * c / 8 * PI * g)               ; end
-    def Q ; Math.sqrt(h * 4 * PI / c * u)               ; end
-    def O ; Math.sqrt(h * c ** 5 / 2 * PI * g * k ** 2) ; end
+    #
+    def A(symbol)
+      __send__("#{symbol}a")
+    end
 
-    def Sa ; @Sa ||= self.S * As ; end
-    def Ta ; @Ta ||= self.T * At ; end
-    def Ma ; @Ma ||= self.M * Am ; end
-    def Qa ; @Qa ||= self.Q * Aq ; end
-    def Oa ; @Fa ||= self.O * Ao ; end
+    #def S ; Math.sqrt(h * 8 * PI * g / c ** 3)          ; end
+    #def T ; Math.sqrt(h * 8 * PI * g / c ** 5)          ; end
+    #def M ; Math.sqrt(h * c / 8 * PI * g)               ; end
+    #def Q ; Math.sqrt(h * 4 * PI / c * u)               ; end
+    #def O ; Math.sqrt(h * c ** 5 / 2 * PI * g * k ** 2) ; end
+    #def E ; Math.sqrt(h * c ** 5 / 2 * PI * g)          ; end
 
-    def Sr ; @Sr ||= 1 / self.S * As ; end
-    def Tr ; @Tr ||= 1 / self.T * At ; end
-    def Mr ; @Mr ||= 1 / self.M * Am ; end
-    def Qr ; @Qr ||= 1 / self.Q * Aq ; end
-    def Or ; @Fr ||= 1 / self.O * Ao ; end
+    def Sa ; @Sa ||= @S * As ; end
+    def Ta ; @Ta ||= @T * At ; end
+    def Ma ; @Ma ||= @M * Am ; end
+    def Qa ; @Qa ||= @Q * Aq ; end
+    def Oa ; @Oa ||= @O * Ao ; end
+    def Ea ; @Oa ||= @E * Ae ; end
+
+    def rada ; 1; end
+
+    def Sr ; @Sr ||= 1 / @S * As ; end
+    def Tr ; @Tr ||= 1 / @T * At ; end
+    def Mr ; @Mr ||= 1 / @M * Am ; end
+    def Qr ; @Qr ||= 1 / @Q * Aq ; end
+    def Or ; @Or ||= 1 / @O * Ao ; end
+    def Er ; @Or ||= 1 / @E * Eo ; end
 
     def coefficients
-      return self.Sa, self.Ta, self.Ma, self.Qa, self.Oa
+      return self.Sa, self.Ta, self.Ma, self.Qa, self.Oa, self.Ea
     end
 
     def to_a
-      return self.Sr, self.Tr, self.Mr, self.Qr, self.Or
+      return self.Sr, self.Tr, self.Mr, self.Qr, self.Or, self.Er
     end
   end
 

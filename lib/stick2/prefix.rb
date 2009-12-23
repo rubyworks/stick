@@ -1,41 +1,26 @@
-require 'stick2/baseunit'
-
 module Stick
+module Units
 
   class Prefix
 
-    attr :unit
+    # Long form of prefix, eg. "mega".
+    attr :long
 
-    def initialize(unit)
-      @unit = unit
-    end
+    # Short form of prefix, eg. "M".
+    attr :short
 
-    #
-    def symbol
-      (self.class.symbol.to_s + unit.symbol).to_sym
-    end
+    # Mulitplicative factor, eg 10e6.
+    attr :factor
 
     #
-    def term
-      self.class.term + unit.term
-    end
-
-    #
-    def self.single
-      self.class.term + unit.single
-    end
-
-    #
-    def to_lcm
-      super * self.class.multiple
-    end
-
-    #
-    def self.from_lcm(measure)
-      super / self.class.prefix_multiple
+    def initialize(long, short, factor)
+      @long   = long
+      @short  = short
+      @factor = factor
     end
 
   end
 
+end
 end
 

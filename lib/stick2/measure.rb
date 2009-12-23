@@ -1,3 +1,5 @@
+require 'stick2/type'
+
 class Object
   alias_method :__inspect__, :inspect
 end

@@ -7,9 +7,13 @@ module Units
   #   h = 1      x (At / As^2)
   #   G = 1/8 PI x (As^6 / At^5)
 
-  constant :speed_of_light, :lightspeed, :symbol => :c
-  constant :plancks_constant, :symbol => :h
-  constant :gravitational_constant, :symbol => :G
+  # C O N S T A N T S
+
+  au.constant :speed_of_light, :lightspeed, :symbol => :c
+  au.constant :plancks_constant,            :symbol => :h
+  au.constant :gravitational_constant,      :symbol => :G
+
+  au.speed_of_light = au.S / au.T
 
   # Speed of Light (S / T)
   conversion :speed_of_light, :au do

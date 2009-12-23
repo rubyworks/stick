@@ -3,8 +3,15 @@ require 'stick2/frame'
 module Stick
 module Units
 
+  # The Conversion class codifies the procedure
+  # of calculating a conversion from one unit
+  # to a measure of others.
   #
-
+  #--
+  # TODO: I suspect this design may submit to greater simplification
+  # perhaps by having it produce a reduced Proc, thus allowing us
+  # dispense with the Conversion object itself.
+  #++
   class Conversion
 
     attr :fn
@@ -16,27 +23,53 @@ module Units
 
     #
     def to_s
-      "#<(#{fn[1]} #{fn[0]} " + fn[2..-1].map{ |e| e.inspect }.join(',') + ')>'
+      '#<' + @fn.inspect + ')>'
     end
 
     alias_method :inspect, :to_s
 
     #
 
+    def +(other)
+      #other = other.fn if Conversion===other
+      @fn = [:'+', @fn, other]
+      self
+    end
+
+    #
+
+    def -(other)
+      #other = other.fn if Conversion===other
+      #Conversion.new(:'-', self, other)
+      @fn = [:'-', @fn, other]
+      self
+    end
+
+    #
+
     def *(other)
-      Conversion.new(:'*', self, other)
+      #other = other.fn if Conversion===other
+      #Conversion.new(:'*', self, other)
+      @fn = [:'*', @fn, other]
+      self
     end
 
     #
 
     def /(other)
-      Conversion.new(:'/', self, other)
+      #other = other.fn if Conversion===other
+      #Conversion.new(:'/', self, other)
+      @fn = [:'/', @fn, other]
+      self
     end
 
     #
 
     def **(other)
-      Conversion.new(:'**', self, other)
+      #other = other.fn if Conversion===other
+      #Conversion.new(:'**', self, other)
+      @fn = [:'**', @fn, other]
+      self
     end
 
     #
@@ -49,9 +82,9 @@ module Units
 
     def system
       @system ||= (
-        list = fn.map do |e|
+        list = fn.flatten.map do |e|
           case e
-          when Type, Conversion
+          when UnitType, Conversion
             e.system
           end
         end
@@ -64,9 +97,9 @@ module Units
 
     def base?
       @base ||= (
-        fn.each do |e|
+        fn.flatten.each do |e|
           case e
-          when Type, Conversion
+          when UnitType, Conversion
             return false unless e.base?
           end
         end
@@ -77,20 +110,35 @@ module Units
     #
 
     def call #(measure)
-      op, *args = *fn
-      receiver, *arguments = args.map do |arg|
-        case arg
-        when Conversion
-          arg.call
-        when Type
-          Measure.new(Unit.new(arg, 1))
-        else
-          arg
-        end
-      end
-      unit_measure = receiver.__send__(op, *arguments)
-      unit_measure
+      calc(*fn)
+      #op, *args = *fn
+      #receiver, *arguments = args.map do |arg|
+      #  case arg
+      #  when Array
+      #    calc(*arg)
+      #  when Conversion
+      #    arg.call
+      #  when UnitType
+      #    Measure.new(Unit.new(arg, 1))
+      #  else
+      #    arg
+      #  end
+      #end
+      #unit_measure = receiver.__send__(op, *arguments)
+#p unit_measure
+#      unit_measure
       #measure.value * unit_measure ** measure.power
+    end
+
+    #
+    def calc(op, a, b)
+      a = a.fn if Conversion===a
+      b = b.fn if Conversion===b
+      a = calc(*a) if Array===a
+      b = calc(*b) if Array===b
+      a = Measure.new(Unit.new(a, 1)) if UnitType===a
+      b = Measure.new(Unit.new(b, 1)) if UnitType===b
+      a.__send__(op, b)
     end
 
   end
