@@ -1,14 +1,14 @@
-require 'stick2'
+require 'stick/units/si'
 
 TestCase Stick::Measure do
 
   #include Stick::Units  #TODO: not working, why?
 
   Unit :factor? => "decerns factors of equal powers" do
-    n1 = Stick::Measure.new(1, Stick::Units::SI::Kilogram.new(1))
-    n2 = Stick::Measure.new(1, Stick::Units::SI::Kilogram.new(1))
+    n1 = Stick::Measure.new(1, Stick::Unit.new(Stick.systems[:si].types[:kg], 1))
+    n2 = Stick::Measure.new(1, Stick::Unit.new(Stick.systems[:si].types[:kg], 1))
     n2.assert.factor?(n1)
-    n1 = Stick::Measure.new(1, Stick::Units::SI::Kilogram.new, Stick::Units::SI::Meter.new, Stick::Units::SI::Second.new(-1))
+    n1 = Stick::Measure.new(1, Stick::Unit.new(Stick.systems[:si].types[:kg], 2)), Stick::Units::SI::Meter.new, Stick::Units::SI::Second.new(-1))
     n2 = Stick::Measure.new(1, Stick::Units::SI::Newton.new)
     n2.assert.factor?(n1)
   end
@@ -23,7 +23,7 @@ TestCase Stick::Measure do
   end
 
   Unit :factor? => "decerns factors of lesser negative powers" do
-    n1 = Stick::Measure.new(1, Stick::Units::SI::Kilogram.new(-2))
+    n1 = Stick::Measure.new(1, Stick::Unit.new(Stick.systems[:si].types[:kg], 2))
     n2 = Stick::Measure.new(1, Stick::Units::SI::Kilogram.new(-1))
     n2.assert.factor?(n1)
     n1 = Stick::Measure.new(1, Stick::Units::SI::Kilogram.new, Stick::Units::SI::Meter.new, Stick::Units::SI::Second.new(-2))

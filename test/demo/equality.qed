@@ -4,9 +4,11 @@ Equality is a broader issue for unit systems, then it is for
 the usual type system, since two aspect of a thing are being
 compared, the measures value and it's unit.
 
+  require 'stick/units/si'
+
 == Case Equality
 
-Check value equality of prime units.
+Check case equality of prime units.
 
     1.g.assert  === 1.g
     1.kg.assert === 1.kg
@@ -36,6 +38,11 @@ Check value equality of commensurate prime units.
 
     1000.g.assert == 1.kg
     1000.m.assert == 1.km
+
+Check value equality of commensurate prefixed units.
+
+    1000000.g.assert  == 1.Mg
+    0.001.g.assert == 1.mg
 
 Check value equality of compound units.
 
@@ -72,6 +79,11 @@ Check unit inequality of commensutate units.
     1000.g.refute.equals? 1.kg
     1000.m.refute.equals? 1.km
 
+Check unit equality of commensurate prefixed units.
+
+    1000000.g.refute.equals? 1.Mg
+    0.001.g.refute.equals? 1.mg
+
 Check unit equality of compound units.
 
     1.g.m.assert.equals? 1.g.m
@@ -97,11 +109,11 @@ Two measures are commensurate when their units ar the
 same or can be converted to be the same, irregardless
 of the powers of those units.
 
-  1.kg.assert.commensurate? 1.kg
-  1.kg.assert.commensurate? 1.g
+    1.kg.assert.commensurate? 1.kg
+    1.kg.assert.commensurate? 1.g
 
-  1.kg.assert.commensurate? 1.kg**2
-  1.kg.assert.commensurate? 1.g**2
+    1.kg.assert.commensurate? 1.kg**2
+    1.kg.assert.commensurate? 1.g**2
 
 
 == Proportional Equality
@@ -110,12 +122,29 @@ Two measures are proportional when their units are
 exactly the same or can be converted to be exactly 
 the same --including their power.
 
-  1.kg.assert.proportional? 1.kg
-  1.kg.assert.proportional? 1.g
+    1.kg.assert.proportional? 1.kg
+    1.kg.assert.proportional? 1.g
 
-  1.kg.refute.proportional? 1.kg**2
+    1.kg.refute.proportional? 1.kg**2
+
+Check proportional equality of commensurate prefixed units.
+
+    1000000.g.assert.proportional? 1.Mg
+    0.001.g.assert.proportional? 1.mg
+
+== Systemtic Equality
+
+Two measures are systemic when all their units
+are from the same unit system.
+
+    1.kg.assert.systemic? 1.kg
+    1.kg.assert.systemic? 1.g
+
+Check proportional equality of commensurate prefixed units.
+
+    1000000.g.assert.systemic? 1.Mg
+    0.001.g.assert.systemic? 1.mg
 
 ---
-require 'helper'
-require 'stick2'
+* Helper[helper.rb]
 

@@ -1,6 +1,6 @@
 = Unit Conversions
 
-    require 'stick2'
+    require 'stick/units/si'
 
 Check conversions to same type.
 

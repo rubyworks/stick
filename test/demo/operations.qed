@@ -1,14 +1,15 @@
 = Unit Operations
 
-Unit operations include all the typical numerical
-operations.
+Unit operations include all the typical numerical operations.
+
+  require 'stick/units/si'
 
 == Unit Power
 
-Unit power is used to create a measure of a squared,
-cubic or higher diemension units. It works just like
-the normal power method (#**) except that it leaves
-the measure numerical value unchanged.
+Unit power is used to create a measure of a squared, cubic
+or higher diemension units. It works just like the normal
+power method (#**) except that it leaves the measure numerical
+value unchanged.
 
   (1.m^2).assert == 1.m * 1.m
   (2.m^2).assert == 2.m * 1.m
@@ -34,6 +35,8 @@ Multiplication of like units.
   (2.m * 3.m).assert == 6.m^2
 
   (2.m * 3.m * 4.m).assert == 24.m^3
+
+  (1.N * 1.kN).assert == 1001.N
 
 Multiplication of unlike units.
 
@@ -67,5 +70,5 @@ Division with scalars.
   2.m.invert.assert == 0.5 * (1.m^-1)
 
 ---
-require 'stick2'
+
 
