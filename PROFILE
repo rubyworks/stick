@@ -1,0 +1,24 @@
+--- 
+title  : Stick
+suite  : rubyworks
+summary: Advanced Unit System for Ruby
+contact: Trans <transfire at gmail.com>
+license: MIT
+created: 2009-11-05
+authors: Thomas Sawyer
+
+copyright:
+  Copyright (c) 2009 Thomas Sawyer
+
+description:
+  Stick is a very elegant and comprehensive units system providing
+  SI units, US English units, UK Imperial Units, and two variations
+  of Plank units, all via a very easy to use method-based interface.
+  It also include a large set of real world contants, provided in
+  "m kg s" and "cm kg s" SI units, and any of the other units of 
+  measure.
+
+resources:
+  homepage    : http://rubyworks.github.com/stick
+  develpoment : http://github.com/rubyworks/stick
+  repository  : git://github.com/rubyworks/stick.git
