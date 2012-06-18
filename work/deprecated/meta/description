@@ -1,6 +1,7 @@
-Stick is an comprehensive science library including a
-units system providing both SI units and web-updated
-currency units, via a very easy to use method-based interface.
+Stick is a very elegant and comprehensive units system providing
+SI units, US English units, UK Imperial Units, and two variations
+of Plank units, all via a very easy to use method-based interface.
 It also include a large set of real world contants, provided in
-"m kg s" and "cm kg s" measures. More science libs are to come.
+"m kg s" and "cm kg s" SI units, and any of the other units of 
+measure.
 

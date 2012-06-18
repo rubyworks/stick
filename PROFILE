@@ -1,14 +1,10 @@
 --- 
 title  : Stick
-suite  : rubyworks
 summary: Advanced Unit System for Ruby
 contact: Trans <transfire at gmail.com>
-license: MIT
+license: Apache 2.0
 created: 2009-11-05
 authors: Thomas Sawyer
-
-copyright:
-  Copyright (c) 2009 Thomas Sawyer
 
 description:
   Stick is a very elegant and comprehensive units system providing
@@ -19,6 +15,13 @@ description:
   measure.
 
 resources:
-  homepage    : http://rubyworks.github.com/stick
-  develpoment : http://github.com/rubyworks/stick
-  repository  : git://github.com/rubyworks/stick.git
+  home: http://rubyworks.github.com/stick
+  code: http://github.com/rubyworks/stick
+
+repositories:
+  public: git://github.com/rubyworks/stick.git
+
+organization : RubyWorks
+copyright    : Copyright (c) 2009 Thomas Sawyer
+
+
